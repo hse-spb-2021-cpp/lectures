@@ -15,6 +15,8 @@ int main() {
 
         std::cout << s.count(3) << "\n";
         std::cout << s.count(33) << "\n";
+        if (s.count(10)) { /* ... */ }
+        if (s.count(10) != 0) { /* ... */ }
     }
 
     {
@@ -51,5 +53,8 @@ int main() {
         // erase(end()) - UB
         ms.erase(ms.find(2));  // UB
         std::cout << ms.size() << "\n";
+
+        // 1     2 2 3 4
+        // begin             end
     }
 }
