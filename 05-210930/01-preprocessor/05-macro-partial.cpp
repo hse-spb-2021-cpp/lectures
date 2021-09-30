@@ -1,2 +1,8 @@
+// #define private public  // UB
+// #include <vector>
+
 // #define true false // UB
-// https://github.com/menahishayan/rickroll.h
+
+// #define int long long  // UB
+
+// https://github.com/menahishayan/rickroll.h  // Probably not UB
