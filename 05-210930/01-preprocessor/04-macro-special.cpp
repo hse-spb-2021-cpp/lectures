@@ -1,7 +1,8 @@
 #include <iostream>
 
 // ## and #, bad stuff happens with nested macros
-// __FILE__ __LINE__ __COUNTER__
+// __FILE__ __LINE__
+// Non-standard, but supported by (Apple) GCC, Clang, MSVC (not Intel C++): __COUNTER__, use __LINE__ instead
 #define my_little_debug(x) \
     std::cout << #x << " = " << (x) \
               << " at " << __FILE__ << ":" << __LINE__ << "\n"
