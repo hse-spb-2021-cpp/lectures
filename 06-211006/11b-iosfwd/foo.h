@@ -7,4 +7,4 @@ struct Foo {};
 
 std::ostream& operator<<(std::ostream&, const Foo&);
 
-#endif
+#endif  // FOO_H_

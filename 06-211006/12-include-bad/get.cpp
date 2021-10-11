@@ -1,4 +1,4 @@
-// #include "get.h"
+#include "get.h"
 
 float get() {
     return 1'234'567'890;

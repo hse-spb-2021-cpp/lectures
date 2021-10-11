@@ -1,8 +1,8 @@
 #ifndef FOO_H_
 #define FOO_H_
 
-#include "foo_fwd.h"
 #include "bar.h"
+#include "foo_fwd.h"
 
 struct Foo {
     Bar b{this};

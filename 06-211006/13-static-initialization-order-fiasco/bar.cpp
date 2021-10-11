@@ -1,9 +1,10 @@
 #include <iostream>
 
 struct Bar {
-    Bar() {
-        std::cout << "Bar()\n";
+    Bar(int x) {
+        std::cout << "Bar(" << x << ")\n";
     }
 };
 
-Bar b;
+Bar b1(10);
+Bar b2(20);
