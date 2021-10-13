@@ -1,11 +1,11 @@
 #include <assert.h>
 #include <vector>
 
-class Stack {
+class stack {
     std::vector<int> data;
 
 public:
-    void push(int x) & {
+    void push(int x) & {  // ref-qualifier
         data.push_back(x);
     }
 
@@ -23,15 +23,15 @@ public:
     }
 };
 
-Stack foo() {
-    Stack s;
+stack foo() {
+    stack s;
     s.push(1);
     s.push(2);
     return s;
 }
 
 int main() {
-    Stack s;
+    stack s;
     s.push(1);
     s.push(2);
     s.push(3);
@@ -41,4 +41,13 @@ int main() {
     assert(s.pop() == 1);
 
     foo().push(10);
+
+    std::vector<int>{1, 2, 3}.push_back(40);
+    std::vector<int>{1, 2, 3} = std::vector{4, 5, 6};
+
+    // bigint a;
+    // (a++) = 10;
+
+    // int b;
+    // b++ = 10;
 }

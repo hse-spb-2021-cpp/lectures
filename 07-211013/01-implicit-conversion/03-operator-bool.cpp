@@ -1,4 +1,7 @@
+#include <iostream>
+
 struct Foo {
+    // TODO: add example with operator int
     explicit operator bool() {
         return true;
     }
@@ -12,13 +15,20 @@ void baz(const Foo &) {
 
 int main() {
     Foo f;
-    if (f) { // if (f.operator bool()) { // Explicit!
+    // bool x = f;  // implicit
+
+    if (f) {  // if (f.operator bool()) { // Explicit!
     } else {
     }
 
-    // while (cin) {} --> while (cin.operator bool()) {}
+    while (f) {}
+    for (; f;) {}
 
-    // Safe bool idiom
+    // while (std::cin >> x) {}
+    // while ((std::cin >> x).operator bool()) {}
+
+    // In C++03 and before: safe bool idiom
+    // const int z0 = std::cin;
 
     // [[maybe_unused]] int z1 = f;
     // [[maybe_unused]] int z2 = 10 + f;
