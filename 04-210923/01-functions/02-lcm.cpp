@@ -23,6 +23,7 @@ int gcd(int a, int b) {
 }
 
 // Since C++17: int std::lcm(int a, int b)
+// https://codeforces.com/blog/entry/94896
 long long lcm(long long a, long long b) {
     return a / gcd(a, b) * b;
 }
