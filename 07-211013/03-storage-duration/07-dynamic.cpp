@@ -13,7 +13,7 @@ int main() {
     Foo &fref = *f;
     fref.vec.resize(30);
 
-    // delete f;  // Leak otherwise
+    delete f;  // Leak otherwise
     // delete f;  // Double-free
 
     /*{

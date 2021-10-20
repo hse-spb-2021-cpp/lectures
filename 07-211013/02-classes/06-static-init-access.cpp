@@ -3,7 +3,7 @@
 
 struct Counter {
 private:
-    static const int calls_init;
+    static const int CALLS_INIT;
     static int calls;  // Declaration.
 
 public:
@@ -16,12 +16,12 @@ public:
     }
 };
 
-const int Counter::calls_init = 10;  // subtle: const initialization
-int Counter::calls = calls_init;  // we are "inside" Counter after ::
+const int Counter::CALLS_INIT = 10;  // subtle: const initialization
+int Counter::calls = CALLS_INIT;  // we are "inside" Counter after ::
 #if 0
 // subtle: dynamic initialization
-const int Counter::calls_init = []() {
-    std::cout << "Counter::calls_init initialized\n";
+const int Counter::CALLS_INIT = []() {
+    std::cout << "Counter::CALLS_INIT initialized\n";
     return 10;
 }();
 #endif

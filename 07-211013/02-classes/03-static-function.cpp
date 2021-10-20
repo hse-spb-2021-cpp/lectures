@@ -17,9 +17,16 @@ public:
     static int get(Foo &f) {
         return f.x;
     }
+    friend Foo friend_create();  // static member function != friend function
 };
 
+Foo friend_create() {  // can be friend for multiple classes
+    return Foo();
+}
+
 int main() {
+    // Foo f;
+    [[maybe_unused]] Foo f0 = friend_create();
     Foo f1 = Foo::create();
     Foo f2 = Foo::create();
 

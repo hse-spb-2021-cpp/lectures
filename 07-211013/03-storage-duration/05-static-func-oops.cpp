@@ -5,8 +5,8 @@
 void foo(bool condition, int n) {
     if (condition) {
         // static std::vector<int> v(n);
-        // static std::vector<int> v(std::cout << "inited\n", n);
         // static std::vector<int> v((std::cout << "inited\n", n));
+        // static std::vector<int> v(std::cout << "inited\n", n);
         /*static std::vector<int> v([&]() {
             std::cout << "inited\n";
             return n;

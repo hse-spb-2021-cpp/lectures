@@ -6,18 +6,18 @@ struct bigint {
     int var;
 
     bigint(int x) : digits{x % 10, x / 10} {
-        std::cout << "bigint(" << x << ")\n";
+        std::cout << this << " bigint(" << x << ")\n";
     }
 
     bigint() : bigint(0)/*, var(10)*/ {  // since C++11
         var = 10;
-        std::cout << "bigint()\n";
+        std::cout << this << " bigint()\n";
     }
 
     bigint(bool) {
-        std::cout << "bigint(bool)\n";
+        std::cout << this << " bigint(bool)\n";
         bigint(0);
-        std::cout << "digits.size() == " << digits.size() << "\n";
+        std::cout << this << " digits.size() == " << digits.size() << "\n";
     }
 };
 

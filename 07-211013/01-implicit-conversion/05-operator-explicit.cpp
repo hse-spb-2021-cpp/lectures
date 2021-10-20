@@ -8,7 +8,7 @@ struct Foo {
 
 struct Bar {
     explicit operator bool() {
-        return 10;
+        return true;
     }
 };
 
@@ -18,8 +18,8 @@ int main() {
     // [[maybe_unused]] bool x1 = f;
     // [[maybe_unused]] bool x2 = b;
 
-    // if (f) {}
-    if (b) {}
+    // if (f) {}  // no implicit conversion to int or bool
+    if (b) {}  // explicit conversion to bool!
 
     // for (; f;) {}
     for (; b;) {}

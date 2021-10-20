@@ -12,9 +12,11 @@ void call_with_bar(const Bar&) {
 }
 
 int main() {
-    call_with_bar(Bar(Foo(10)));
-    call_with_bar(Bar(Foo(10LL)));
-    call_with_bar(Foo(10));
-    call_with_bar(Bar(10));
-//    call_with_bar(10);
+    // Standard conversions like 'Bar -> const Bar' are boring and ommitted.
+    call_with_bar(Bar(Foo(10)));  // no implicit conversions
+    call_with_bar(Bar(Foo(10LL)));  // standard implicit conversion long long -> int
+    call_with_bar(Foo(10));  // user-defined implicit conversion Foo -> Bar
+    call_with_bar(Bar(10));  // user-defined implicit conversion int -> Foo
+    call_with_bar(Bar(10LL));  // standard implicit conversion long long -> int + user-defined implicit conversion int -> Bar
+    // call_with_bar(10);  // needs two user-defined implicit conversions: int -> Foo -> Bar
 }

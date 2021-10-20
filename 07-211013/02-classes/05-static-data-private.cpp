@@ -33,7 +33,10 @@ int main() {
     assert(Counter::get_calls() == 4);
     assert(c1.get_calls() == 4);
     assert(c2.get_calls() == 4);
+
     assert(Counter::counter() == 5);
+
+    assert(Counter::get_calls() == 5);
     assert(c1.get_calls() == 5);
     assert(c2.get_calls() == 5);
 }

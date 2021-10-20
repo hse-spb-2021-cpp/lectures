@@ -8,7 +8,7 @@ struct Foo {
 
 struct Bar {
     operator bool() {
-        return 10;
+        return true;
     }
 };
 
@@ -16,7 +16,7 @@ int main() {
     [[maybe_unused]] Foo f;
     [[maybe_unused]] Bar b;
     [[maybe_unused]] bool x1 = f;  // implicit: user-defined + int-to-bool
-    [[maybe_unused]] bool x2 = b;  // implicit: user-defined + int-to-bool
+    [[maybe_unused]] bool x2 = b;  // implicit: user-defined
 
     if (f) {}
     if (b) {}

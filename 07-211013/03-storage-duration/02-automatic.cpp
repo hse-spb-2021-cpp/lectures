@@ -25,5 +25,6 @@ int main() {
     // old 'x' is available again
 
     [[maybe_unused]] int data[100];
-    // [[maybe_unused] int data2[1'000'000];  // stack overflow
+    // [[maybe_unused]] int data2[100'000'000];  // stack overflow
+    // data2[50'000'000] = 123;
 }

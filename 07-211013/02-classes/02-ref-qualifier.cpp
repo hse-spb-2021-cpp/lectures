@@ -9,7 +9,7 @@ public:
         data.push_back(x);
     }
 
-    int get() const {
+    [[nodiscard]] int get() const {
         assert(!data.empty());
         return data.back();
     }
@@ -40,6 +40,8 @@ int main() {
     assert(s.pop() == 2);
     assert(s.pop() == 1);
 
+    assert(foo().get() == 2);
+    assert(foo().pop() == 2);
     foo().push(10);
 
     std::vector<int>{1, 2, 3}.push_back(40);
