@@ -10,11 +10,13 @@ struct Foo {
 };
 
 int main() {
+    // https://github.com/Nekrolm/ubbook/blob/master/pointer_prominence/invalid_pointer.md
     {
         int data[4];
         int end;
         std::cout << (&end - data) << "\n";  // ub
-        std::cout << (data < &end) << "\n";  // ub
+        std::cout << (data < &end) << "\n";  // unspecified, may be inconsistent!
+        std::cout << (data < &end) << "\n";  // unspecified, may be inconsistent!
         assert(data != &end);  // ok
     }
     {
@@ -23,7 +25,7 @@ int main() {
         assert(*x == 10);  // ok
 
         x++;  // not ub: one-past-end of a 'array of single element'
-        std::cout << *x << "\n";  // ub, but may look reasonable, may be defined by compiler
+        std::cout << *x << "\n";  // ub, but may look reasonable
 
         std::cout << &f.b - &f.a << "\n";  // ub: not an array
         assert(&f.a < &f.b);  // ok: members of the same access level (private/protected/public) are ordered
