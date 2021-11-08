@@ -13,7 +13,7 @@ struct Foo {
 std::unique_ptr<Foo> create_foo() {
     auto f = std::make_unique<Foo>();
     assert(f->v[2] == 3);
-    return f;  // Can return local variables since C++17
+    return f;  // Can return local variables
 }
 
 auto global_f = std::make_unique<Foo>();

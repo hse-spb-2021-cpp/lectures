@@ -20,8 +20,8 @@ int main() {
         std::unique_ptr<Foo> f;
         std::cout << (f == nullptr) << "\n";
 
-        // f = std::make_unique<Foo>();
         f = std::unique_ptr<Foo>(new Foo());
+        // f = std::make_unique<Foo>();  // C++14
         std::cout << f->v[4] << "\n";
     }
 }

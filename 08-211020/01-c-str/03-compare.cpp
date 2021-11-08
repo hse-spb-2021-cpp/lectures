@@ -10,7 +10,7 @@ int main() {
     {
         const char *a = "hello";
         const char *b = "ello";
-        std::cout << (a < b) << "\n";  // UB :(
+        std::cout << (a < b) << "\n";  // unspecified behavior, may be inconsistent.
     }
     {
         const char *a = "hello";
