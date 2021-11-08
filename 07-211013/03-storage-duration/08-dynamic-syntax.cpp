@@ -36,7 +36,7 @@ int main() {
         // delete f_arr;  // UB
     }
     {
-        Foo *f_arr = new Foo[5]{1, 2, 3};
+        Foo *f_arr = new Foo[5]{1, 2, 3};  // copy initialization + value initialization
         delete[] f_arr;
     }
 }
