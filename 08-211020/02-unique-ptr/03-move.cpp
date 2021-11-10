@@ -18,7 +18,7 @@ std::unique_ptr<Foo> create_foo() {
 
 auto global_f = std::make_unique<Foo>();
 std::unique_ptr<Foo> create_foo_bad() {
-    return global_f;
+    return std::move(global_f);  // But why?
 }
 
 int main() {
@@ -26,8 +26,10 @@ int main() {
     {
         auto f = create_foo();
         vec.emplace_back(std::move(f));
+        vec.emplace_back(create_foo());  // No std::move needed
 
         std::cout << vec[0]->v[4] << "\n";
+        std::cout << vec[1]->v[4] << "\n";
         std::cout << (f == nullptr) << "\n";
     }
     std::cout << vec[0]->v[4] << "\n";
