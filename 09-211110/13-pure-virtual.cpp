@@ -37,11 +37,15 @@ struct Image : Widget {
     }
 };
 
+void print_area(const Widget &w) {
+    std::cout << w.area() << "\n";
+}
+
 int main() {
     Button btn("Click Me!");
     Image img(60, 70);
-    std::cout << btn.area() << "\n";
-    std::cout << img.area() << "\n";
+    print_area(btn);
+    print_area(img);
     // Widget w;  // CE
     // new Widget();  // CE
 }

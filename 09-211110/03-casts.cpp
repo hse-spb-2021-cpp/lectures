@@ -5,14 +5,6 @@ struct Base {  // Базовый класс (base) в C++. Родительск�
     void foo() const {
         std::cout << "x=" << x << "\n";
     }
-
-    // Preventing slicing
-    /*
-    Base(const Base &) = delete;
-    Base(Base &&) = delete;
-    Base &operator=(const Base &) = delete;
-    Base &operator=(Base &&) = delete;
-    */
 };
 
 struct Derived : Base {  // Производный класс (derived). Дочерний/подкласс.
@@ -40,6 +32,7 @@ int main() {
     {
         Derived d;
         foo(d);  // Not UB: d is really Derived.
+
         // Base(const Base &other) : x(other.x)
         bar(d);  // Always UB.
     }

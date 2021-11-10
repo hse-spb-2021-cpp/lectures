@@ -31,10 +31,6 @@ Foo get_foo() {
     return {};
 }
 
-Foo get_foo_complex() {
-    return {};
-}
-
 int main() {
     {
         std::cout << "===== Copy construction =====\n";
@@ -63,5 +59,6 @@ int main() {
         Foo a;
         Foo b;
         b = std::move(a);
+        b = get_foo();  // No std::move needed
     }
 }

@@ -42,4 +42,5 @@ int main() {
         std::cout << dptr << " " << bptr << "\n";
         std::cout << &d.x << " " << &d.y << "\n";
     }
+    std::cout << sizeof(Base) << " " << sizeof(Derived) << "\n";
 }

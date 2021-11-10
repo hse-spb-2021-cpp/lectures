@@ -15,8 +15,7 @@ struct Derived : Base {
 
     Derived() {
         print = [&]() {
-            std::cout << "x = " << x << "\n";
-            std::cout << "y = " << y << "\n";
+            std::cout << "x = " << x << ", y = " << y << "\n";
         };
     }
 };

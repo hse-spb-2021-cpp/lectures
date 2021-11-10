@@ -6,7 +6,7 @@ struct Widget {
     virtual int width() const = 0;
     virtual int height() const = 0;
 
-    virtual ~Widget() = default;  // IMPORTANT! Rule.
+    virtual ~Widget() = default;  // IMPORTANT! Rule: add virtual dtor in polymorphic base.
     // virtual ~Widget() {};
 
     int area() const {
@@ -48,8 +48,9 @@ int main() {
         std::vector<std::unique_ptr<Widget>> widgets;
         widgets.emplace_back(std::make_unique<Button>("Click Me!"));
         widgets.emplace_back(std::make_unique<Image>(60, 70));
-        std::cout << widgets[0]->area() << "\n";
-        std::cout << widgets[1]->area() << "\n";
+        for (const auto &w : widgets) {
+            std::cout << w->area() << "\n";
+        }
     }
     {
         Button *b = new Button("Click me!");
@@ -61,6 +62,6 @@ int main() {
     }
     {
         Widget *w = new Button("Click me!");
-        delete w;  // Not UB: ~Button() becasuse virtual
+        delete w;  // Not UB: ~Button() because ~Widget() is virtual
     }
 }

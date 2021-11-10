@@ -44,6 +44,9 @@ int main() {
         std::vector<std::unique_ptr<Widget>> widgets;
         widgets.emplace_back(std::make_unique<Button>("Click Me!"));
         widgets.emplace_back(std::make_unique<Image>(60, 70));
+        for (const auto &w : widgets) {
+            std::cout << w->area() << "\n";
+        }
     }
     {
         Button *b = new Button("Click me!");

@@ -7,14 +7,15 @@ struct Base {  // Базовый класс (base) в C++. Родительск�
     }
 
 private:
-    int very_secret = 20;
+    int very_secret = 20;  // for this class and its friends only
 
 protected:
-    int secret = 30;
+    int secret = 30;  // for this class and its derived classes
+    // Please use 'private' still.
 };
 
 struct Derived : Base {  // Производный класс (derived). Дочерний/подкласс.
-    int y = 30;
+    int y = 40;
     void bar() const {
         foo();
         std::cout << "x=" << x << ", y=" << y << ", secret=" << secret << "\n";
@@ -32,5 +33,4 @@ int main() {
         // int y = d.secret;
     }
     std::cout << sizeof(Base) << "," << sizeof(Derived) << "\n";
-//    std::cout << sizeof(int*) << "\n";
 }

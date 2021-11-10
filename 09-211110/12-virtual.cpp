@@ -29,14 +29,11 @@ struct Derived : Base {
 
     void print() const override /* C++11 */ {  // override: добавить virtual, проверить, что в родителе virtual есть.
                                                // На самом деле virtual добавляется автоматически, если был в родителе.
-        std::cout << "x = " << x << "\n";
-        std::cout << "y = " << y << "\n";
+        std::cout << "x = " << x << ", y = " << y << "\n";
     }
 };
 
 int main() {
-    std::cout << sizeof(Base) << "\n";
-
     Base b;
     Derived d;
     b.print();
