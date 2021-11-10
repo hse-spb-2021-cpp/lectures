@@ -25,7 +25,7 @@ struct Derived : Base {  // Производный класс (derived). Доч�
 
 void foo(const Base &b) {
     std::cout << "foo(" << b.x << ")\n";
-    const Derived &d = static_cast<const Derived&>(b);  // derivedcast.
+    const Derived &d = static_cast<const Derived&>(b);  // derivedcast (C++), downcast (others).
     std::cout << ".y=" << d.y << "\n";
 }
 
@@ -40,6 +40,7 @@ int main() {
     {
         Derived d;
         foo(d);  // Not UB: d is really Derived.
+        // Base(const Base &other) : x(other.x)
         bar(d);  // Always UB.
     }
     {

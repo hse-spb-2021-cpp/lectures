@@ -5,12 +5,7 @@
 struct Base {
     int x = 10;
 
-    void print() const {
-        do_print();
-    }
-
-protected:
-    std::function<void()> do_print = [&]() {
+    std::function<void()> print = [&]() {
         std::cout << "x = " << x << "\n";
     };
 };
@@ -19,13 +14,10 @@ struct Derived : Base {
     int y = 20;
 
     Derived() {
-        do_print = [&]() {
+        print = [&]() {
+            std::cout << "x = " << x << "\n";
             std::cout << "y = " << y << "\n";
         };
-    }
-
-    void print() const {
-        do_print();
     }
 };
 

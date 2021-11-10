@@ -8,12 +8,12 @@ struct Foo {
     Foo(const Foo &other) {  // copy constructor
         std::cout << "Foo(const Foo &): " << this << " <- " << &other << "\n";
     }
-    Foo(Foo &&other) {  // move constructor
-        std::cout << "Foo(Foo &&) " << this << " <- " << &other << "\n";
-    }
     Foo &operator=(const Foo &other) {  // copy assignment operator
         std::cout << "operator=(const Foo &) " << this << " <- " << &other << "\n";
         return *this;
+    }
+    Foo(Foo &&other) {  // move constructor
+        std::cout << "Foo(Foo &&) " << this << " <- " << &other << "\n";
     }
     Foo &operator=(Foo &&other) {  // move assignment operator
         std::cout << "operator=(Foo &&) " << this << " <- " << &other << "\n";

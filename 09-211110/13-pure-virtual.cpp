@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct Widget {
-    virtual int width() const = 0;
+    virtual int width() const = 0;  // pure virtual => Widget is 'abstract'
     virtual int height() const = 0;
 
     int area() const {
@@ -42,4 +42,6 @@ int main() {
     Image img(60, 70);
     std::cout << btn.area() << "\n";
     std::cout << img.area() << "\n";
+    // Widget w;  // CE
+    // new Widget();  // CE
 }

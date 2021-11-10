@@ -21,8 +21,8 @@ struct Foo {
 
 void foo(const Base &b) {
     std::cout << "foo(" << b.x << ")\n";
-//    const Foo &d = static_cast<Foo&>(b);
-    const Foo &d = (Foo&)(b);
+//    const Foo &d = static_cast<const Foo&>(b);  // UB, but does not compile
+    const Foo &d = (const Foo&)b;  // UB
     std::cout << ".s=" << d.s << "\n";
 }
 
