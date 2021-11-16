@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 
 project(shared-library CXX)
 
-find_package(Boost 1.71 REQUIRED filesystem)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+find_package(Boost 1.71 REQUIRED filesystem)
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
