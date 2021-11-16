@@ -24,5 +24,5 @@ public:
 };
 
 extern "C" BOOST_SYMBOL_EXPORT plugin_multiply plugin;
-BOOST_SYMBOL_EXPORT plugin_multiply plugin;
+plugin_multiply plugin;
 }  // namespace plugin_multiply

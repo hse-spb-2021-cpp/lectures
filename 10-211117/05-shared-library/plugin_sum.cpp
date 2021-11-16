@@ -24,5 +24,5 @@ public:
 };
 
 extern "C" BOOST_SYMBOL_EXPORT plugin_sum plugin;
-BOOST_SYMBOL_EXPORT plugin_sum plugin;
+plugin_sum plugin;
 }  // namespace plugin_sum
