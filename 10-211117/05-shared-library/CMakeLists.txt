@@ -5,7 +5,9 @@ project(shared-library CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-find_package(Boost 1.71 REQUIRED filesystem)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)  # Recommended by Boost.DLL's manual
+
+find_package(Boost 1.71 REQUIRED filesystem)  # Required by Boost.DLL
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
