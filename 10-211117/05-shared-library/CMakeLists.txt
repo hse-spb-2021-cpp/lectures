@@ -11,6 +11,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 # Windows: libmultiply.dll
 # Linux: libmultiply.so
+# macOS: libmultiply.dylib
 add_library(multiply SHARED plugin_multiply.cpp)
 add_library(sum SHARED plugin_sum.cpp)
 
