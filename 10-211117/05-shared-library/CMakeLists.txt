@@ -9,7 +9,7 @@ find_package(Boost 1.71 REQUIRED filesystem)
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
-# Windows: libmultiply.dll
+# Windows: libmultiply.dll (msys2), multiply.dll (VS)
 # Linux: libmultiply.so
 # macOS: libmultiply.dylib
 add_library(multiply SHARED plugin_multiply.cpp)
