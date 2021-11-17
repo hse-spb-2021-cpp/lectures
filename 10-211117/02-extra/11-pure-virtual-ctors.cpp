@@ -10,6 +10,10 @@ struct Base {
     }
 };
 
+/*void Base::printTo() {  // BUT WHY
+    std::cout << "Not so pure, eh?\n";
+}*/
+
 struct Derived : Base {
     void printTo() override {
     }

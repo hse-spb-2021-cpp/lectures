@@ -10,5 +10,7 @@ struct Foo : private noncopyable {};
 
 int main() {
     Foo f;
-    // noncopyable &n = f;  // WTF, 'private' prevents that.
+    noncopyable &n = f;  // WTF, 'private' prevents that.
+
+    // Foo f2 = f;
 }

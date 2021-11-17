@@ -6,7 +6,13 @@ struct Ellipse {
     virtual int height();
 };
 
-struct Circle : Ellipse {
+struct Circle : Ellipse {  // 'is-a' relationship
+    int width() override {
+        return 2 * radius();
+    }
+    int height() override {
+        return 2 * radius();
+    }
     virtual int radius();
 };
 
@@ -16,7 +22,7 @@ struct Circle {
 };
 
 struct Ellipse : Circle {
-    virtual int radius() {
+    int radius() override {
         ? ? ? ? ? ? ? ? ? ? ? ? ?
     }
     virtual int width();
@@ -25,6 +31,8 @@ struct Ellipse : Circle {
 
 // WTF
 struct Ellipse {
+    virtual int width();
+    virtual int height();
     virtual void setWidth(int w);
     virtual void setHeight(int h);
 };
@@ -39,10 +47,10 @@ void foo(Ellipse &e) {
 }
 
 struct Circle : Ellipse {
-    virtual void setWidth() {
-        .....
+    void setWidth(int w) override {
+        ? ? ? ? ? ? ?
     }
-    void setRadius(int r);
+    virtual void setRadius(int r);
 };
 
 // OK
@@ -51,9 +59,9 @@ struct Circle {
 };
 
 struct Ellipse : Circle {
-    virtual void setRadius(int r) {
-        setWidth(r);
-        setHeight(r);
+    void setRadius(int r) override {
+        setWidth(2 * r);
+        setHeight(2 * r);
     }
     virtual void setWidth(int w);
     virtual void setHeight(int h);

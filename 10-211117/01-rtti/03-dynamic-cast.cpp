@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct Base {
-    virtual void foo(){};
+    virtual ~Base(){};
 };
 
 struct Derived1 : Base {};
@@ -39,8 +39,8 @@ void f(const Base &b) {
 int main() {
     // RTTI (Run-Time Type-Information) is needed, it's sometimes disabled with
     // `-fno-rtti`.
-    SubDerived1 d1;
+    SubDerived1 sd1;
     Derived2 d2;
-    f(d1);
+    f(sd1);
     f(d2);
 }

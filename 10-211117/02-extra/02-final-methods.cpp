@@ -4,7 +4,7 @@ struct Base {
 };
 
 struct Derived : Base {
-    void foo() final {
+    void foo() final {  // final implies 'virtual'
     }
 
     // 'override' is redundant:
@@ -16,6 +16,7 @@ struct Derived : Base {
 };
 
 struct SubDerived : Derived {
+    // 'override' is not important, will not compile either way.
     // void foo() override {}
 
     void bar() override {

@@ -15,8 +15,7 @@ struct AbstractTest {
     AbstractTest(AbstractTest &&) = delete;
     AbstractTest &operator=(const AbstractTest &) = delete;
     AbstractTest &operator=(AbstractTest &&) = delete;
-    virtual ~AbstractTest() {
-    }
+    virtual ~AbstractTest() = default;
 
     const std::string &name() const {
         return m_name;

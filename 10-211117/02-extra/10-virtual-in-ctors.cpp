@@ -19,16 +19,22 @@ struct Base {
 struct Derived : Base {
     int value2 = 456;
 
+    void foo() override {
+        std::cout << "foo(" << value << ", " << value2 << ")\n";
+    }
+
     Derived() : Base(), value2(100) {
         foo();
     }
 
-    void foo() override {
-        std::cout << "foo(" << value << ", " << value2 << ")\n";
+    ~Derived() {
+        foo();
     }
 };
 
 int main() {
     Derived d;
+    std::cout << "== constructed ==\n";
     d.foo();
+    std::cout << "== foo called ==\n";
 }

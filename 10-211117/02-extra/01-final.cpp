@@ -1,9 +1,6 @@
 #include <algorithm>
 
-struct Base {
-    Base() {
-    }
-};
+struct Base {};
 
 struct Derived1 final : Base {
     int value = 123;

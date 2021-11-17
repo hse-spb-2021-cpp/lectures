@@ -21,7 +21,7 @@ struct Derived2 : Base {
         std::cout << "d2op1\n";
     }
     void op2() override {
-        std::cout << "d2op1\n";
+        std::cout << "d2op2\n";
     }
 };
 
@@ -29,8 +29,8 @@ void op3(Base &b) {
     // Slow, is not checked for exhaustiveness by the compiler.
     if (dynamic_cast<Derived1 *>(&b)) {
         std::cout << "d1op3\n";
-    } else if (dynamic_cast<Derived2 *>(&b)) {
-        std::cout << "d2op3\n";
+        //    } else if (dynamic_cast<Derived2 *>(&b)) {
+        //        std::cout << "d2op3\n";
     } else {
         std::terminate();
     }

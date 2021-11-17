@@ -36,7 +36,7 @@ struct Derived2 : Base {
         std::cout << "d2op1\n";
     }
     void op2() override {
-        std::cout << "d2op1\n";
+        std::cout << "d2op2\n";
     }
     void accept(BaseVisitor &v) override {
         v.visit(*this);

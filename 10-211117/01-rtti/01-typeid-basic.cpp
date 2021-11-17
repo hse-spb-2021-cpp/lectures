@@ -23,9 +23,6 @@ Derived &bar() {
 }
 
 int main() {
-    Base b;
-    Derived d;
-
     // RTTI: Run-Time Type Information.
     // https://en.cppreference.com/w/cpp/language/typeid
     std::cout << "===== 1 (type) =====\n";
@@ -43,6 +40,8 @@ int main() {
     std::cout << boost::core::demangle(info_int_expr.name()) << "\n";
 
     std::cout << "===== 2a (polymorphic) =====\n";
+    Base b;
+    Derived d;
     std::cout << boost::core::demangle(typeid(b).name()) << "\n";
     std::cout << boost::core::demangle(typeid(d).name()) << "\n";
     std::cout << boost::core::demangle(typeid(bar()).name())

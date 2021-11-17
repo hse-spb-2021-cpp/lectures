@@ -4,7 +4,9 @@ public:
     }
 };
 
-class Derived : /* private */ Base {};
+class Derived : /* private */ Base {};  // Not OK?
+// class Derived : public Base {};  // OK
+// struct Derived : /* public */ Base {};  // OK
 
 int main() {
     Derived d;
