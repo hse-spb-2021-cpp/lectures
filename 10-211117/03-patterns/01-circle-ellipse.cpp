@@ -48,8 +48,9 @@ void foo(Ellipse &e) {
 
 struct Circle : Ellipse {
     void setWidth(int w) override {
-        ? ? ? ? ? ? ?
+        setRadius(w / 2);  // ???
     }
+    virtual int radius();
     virtual void setRadius(int r);
 };
 

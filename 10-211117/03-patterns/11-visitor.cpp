@@ -60,6 +60,7 @@ int main() {
     std::unique_ptr<Base> d2 = std::make_unique<Derived2>();
 
     Op3 op3;
+    // op3.visit(*d1);  // Should be resolved during compilation, unable.
 
     d1->op1();
     d1->op2();

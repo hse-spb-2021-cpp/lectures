@@ -3,7 +3,7 @@ The answer is heavily OS- and compiler- dependent.
 Exact flags, naming conventions are not unified as well.
 
 Typically everything comes from C, not C++.
-Other languages have their own mechanisms (e.g. `imports` in Java/Python).
+Other languages have their own mechanisms (e.g. `import`s in Java/Python).
 
 ## Static library
 A bunch of translation units embedded into your executable.

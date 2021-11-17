@@ -36,5 +36,6 @@ int main() {
     Derived d;
     std::cout << "== constructed ==\n";
     d.foo();
+    static_cast<Base &>(d).foo();
     std::cout << "== foo called ==\n";
 }

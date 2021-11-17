@@ -19,13 +19,17 @@ int main() {
 
     const std::type_info &info_base = typeid(Base);
     const std::type_info &info_derived = typeid(Derived);
+    using DerivedAlias = Derived;
+    const std::type_info &info_derived_alias = typeid(DerivedAlias);
+
     const std::type_info &info_b = typeid(b);
     const std::type_info &info_d = typeid(d);
 
-    std::cout << (info_base == info_b) << "\n";     // 1
-    std::cout << (info_base == info_d) << "\n";     // 0
-    std::cout << (info_derived == info_b) << "\n";  // 0
-    std::cout << (info_derived == info_d) << "\n";  // 1
+    std::cout << (info_base == info_b) << "\n";                 // 1
+    std::cout << (info_base == info_d) << "\n";                 // 0
+    std::cout << (info_derived == info_b) << "\n";              // 0
+    std::cout << (info_derived == info_d) << "\n";              // 1
+    std::cout << (info_derived == info_derived_alias) << "\n";  // 1
 
     std::cout << typeid(int).name() << "\n";  // 'i' (msys2) pr 'int' (VS)
     std::cout << info_b.name() << "\n";       // '4Base' or 'struct Base' (VS)

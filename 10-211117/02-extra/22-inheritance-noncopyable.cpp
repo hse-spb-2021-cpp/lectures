@@ -7,10 +7,12 @@ struct noncopyable {  // boost::noncopyable
 };
 
 struct Foo : private noncopyable {};
+struct Bar : private noncopyable {};
+struct Baz : private noncopyable {};
 
 int main() {
     Foo f;
-    noncopyable &n = f;  // WTF, 'private' prevents that.
+    // noncopyable &n = f;  // WTF, 'private' prevents that.
 
     // Foo f2 = f;
 }

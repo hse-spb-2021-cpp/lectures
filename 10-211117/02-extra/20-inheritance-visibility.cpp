@@ -9,25 +9,27 @@ struct Derived3 : private Base {  // Default for 'class'.
     void baz() {
         foo();
         Derived3 d3;
-        const Base &b = d3;
+        [[maybe_unused]] const Base &b = d3;
     }
 };
 
-struct Derived22 : Derived2 {
+struct Derived22 : /* public */ Derived2 {
     void bar() {
         foo();
         Derived2 d2;
-        const Base &b2 = d2;
+        [[maybe_unused]] const Base &b2 = d2;
     }
 };
 
-struct Derived33 : Derived3 {
+struct Derived33 : /* public */ Derived3 {
     void bar() {
         // foo();
         [[maybe_unused]] ::Base b;  // :: is important
-        // const ::Base &b2 = *this;
-        // const ::Base &b3 = static_cast<const ::Base &>(*this);
-        const ::Base &b4 = (const ::Base &)*this;  // meh, C-style cast ignores access modifiers
+        // [[maybe_unused]] const ::Base &b2 = *this;
+        // [[maybe_unused]] const ::Base &b3 = static_cast<const ::Base &>(*this);
+        [[maybe_unused]] const ::Base &b4 =
+            (const ::Base
+                 &)*this;  // meh, C-style cast ignores access modifiers
     }
 };
 
@@ -42,9 +44,15 @@ int main() {
     // d2.foo();
     // d3.foo();
 
-    const Base &b1 = d1;
-    // const Base &b2 = d2;
-    const ::Base &b2 = (const Base &)d2;  // meh, C-style cast ignores access modifiers
-    // const Base &b3 = d3;
-    const ::Base &b3 = (const Base &)d3;  // meh, C-style cast ignores access modifiers
+    [[maybe_unused]] const Base &b1 = d1;
+
+    // [[maybe_unused]] const Base &b2x = d2;
+    // [[maybe_unused]] const Base &b2y = static_cast<const Base &>(d2);
+    [[maybe_unused]] const Base &b2z =
+        (const Base &)d2;  // meh, C-style cast ignores access modifiers
+
+    // [[maybe_unused]] const Base &b3x = d3;
+    // [[maybe_unused]] const Base &b3y = static_cast<const Base &>(d3);
+    [[maybe_unused]] const Base &b3z =
+        (const Base &)d3;  // meh, C-style cast ignores access modifiers
 }

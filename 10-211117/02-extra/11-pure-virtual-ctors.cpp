@@ -20,5 +20,6 @@ struct Derived : Base {
 };
 
 int main() {
+    // Base b;  // class is still abstract.
     Derived d;
 }

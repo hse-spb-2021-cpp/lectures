@@ -23,11 +23,11 @@ void f(const Base &b) {
         std::cout << "Derived1\n";
     // d1 is visible
 
-    if (const SubDerived1 *md1 =
+    if (const SubDerived1 *sd1 =
             dynamic_cast<const SubDerived1 *>(&b)) {  // C++03
-        std::cout << "SubDerived1 " << md1->value << "\n";
+        std::cout << "SubDerived1 " << sd1->value << "\n";
     }
-    // md1 is not visible
+    // sd1 is not visible
 
     if (const Derived2 *d2 = dynamic_cast<const Derived2 *>(&b);
         d2 != nullptr) {  // C++17: if with init statement
@@ -43,4 +43,7 @@ int main() {
     Derived2 d2;
     f(sd1);
     f(d2);
+
+    Base *b = nullptr;
+    std::cout << dynamic_cast<const Derived1 *>(b) << "\n";
 }
