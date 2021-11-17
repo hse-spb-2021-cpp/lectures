@@ -49,3 +49,4 @@ Add `-lboost_filesystem-mt` to link statically (aha!) with Boost.Filesystem.
 
 # (skip)? Gotchas
 Separate heaps and standard libraries (`default_deleter` of `unique_ptr`), ABI incompatibilities...
+Separate `std::cout` which may interleave with each other and main without proper synchronization.
