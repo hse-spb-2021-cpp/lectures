@@ -18,7 +18,10 @@ struct Derived22 : Derived2 {
 struct Derived33 : Derived3 {
     void bar() {
         // foo();
-        // const Base &b2 = *this;
+        [[maybe_unused]] ::Base b;  // :: is important
+        // const ::Base &b2 = *this;
+        // const ::Base &b3 = static_cast<const ::Base &>(*this);
+        const ::Base &b2 = (const ::Base&)*this;
     }
 };
 
