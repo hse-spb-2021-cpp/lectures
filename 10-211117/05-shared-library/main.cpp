@@ -1,4 +1,4 @@
-#include <boost/dll/import.hpp> // for import_alias
+#include <boost/dll/import.hpp>  // for import_alias
 #include <boost/filesystem/path.hpp>
 #include <boost/version.hpp>
 #include <iostream>
@@ -18,15 +18,16 @@ int main() {
     std::vector<boost::shared_ptr<plugins_demo::abstract_plugin>> plugins;
     for (auto &f : fs::directory_iterator(fs::path("plugins/"))) {
         std::cout << "Loading from " << f << "\n";
-        plugins.emplace_back(boost_dll_import_symbol<plugins_demo::abstract_plugin>(
-            f.path(),
-            "plugin"
-        ));
+        plugins.emplace_back(
+            boost_dll_import_symbol<plugins_demo::abstract_plugin>(f.path(),
+                                                                   "plugin"));
         // TODO: dll::load_mode::append_decorations
     }
 
     for (auto &plugin : plugins) {
-        std::cout << plugin->name() << "->calculate(1.5, 1.5) == " << plugin->calculate(1.5, 1.5) << std::endl;
+        std::cout << plugin->name()
+                  << "->calculate(1.5, 1.5) == " << plugin->calculate(1.5, 1.5)
+                  << std::endl;
     }
     return 0;
 }
