@@ -10,13 +10,14 @@ struct BaseVtable {  // virtual functions table
     // pretty_print_impl_ptr pretty_print_ptr;
     // read_impl_ptr read_ptr;
 
-    // Can also add: `std::string name`, etc...
+    // We may also add other information about type, e.g.:
+    // std::string type_name;
 };
 
 struct Base {
-    static BaseVtable BASE_VTABLE;
+    static const BaseVtable BASE_VTABLE;
 
-    BaseVtable *vptr = &BASE_VTABLE;
+    const BaseVtable *vptr = &BASE_VTABLE;
     int x = 10;
 
     static void print_impl(Base *b) {
@@ -27,10 +28,10 @@ struct Base {
         vptr->print_ptr(this);
     }
 };
-BaseVtable Base::BASE_VTABLE{Base::print_impl};
+const BaseVtable Base::BASE_VTABLE{Base::print_impl};
 
 struct Derived : Base {
-    static BaseVtable DERIVED_VTABLE;
+    static const BaseVtable DERIVED_VTABLE;
 
     int y = 20;
 
@@ -43,11 +44,11 @@ struct Derived : Base {
         vptr = &DERIVED_VTABLE;
     }
 };
-BaseVtable Derived::DERIVED_VTABLE{Derived::print_impl};
+const BaseVtable Derived::DERIVED_VTABLE{Derived::print_impl};
 
 int main() {
-    Base b;
-    Derived d;
+    Base b;  // vptr == &BASE_VTABLE, x
+    Derived d;  // vptr == &DERIVED_VTABLE, x, y
     b.print();
     d.print();
 

@@ -15,6 +15,7 @@ struct Foo {
 struct Bar {
     int i = 0;
     char c = 0;
+    // padding
 };
 
 int main() {

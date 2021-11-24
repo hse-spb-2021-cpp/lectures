@@ -16,13 +16,14 @@ struct Base {
 };
 
 struct Derived : Base {
-    // using Base::foo;  // Introduce members of Base called 'foo' into the
-    // definition.
     void foo(double) {
         std::cout << "double\n";
     }
     // void foo(int) { std::cout << "Derived int\n"; }  // Will hide, no
     // compilation error.
+
+    // using Base::foo;  // Introduce members of Base called 'foo' into the
+    // definition.
 };
 
 struct SubDerived : Derived {  // Has the same overloads as Derived
@@ -32,12 +33,12 @@ int main() {
     Base b;
     b.foo(1);    // int
     b.foo(1.2);  // int
-    b.foo();     // ok
+    b.foo();     // no args
 
     Derived d;
     d.foo(1.2);  // double
     d.foo(1);    // double :(
-    // d.foo();  // compilation error?
+    d.foo();  // compilation error?
     // Rule: if the derived class has a method called `foo`, do not look at
     //       base's methods, "hide" them.
 

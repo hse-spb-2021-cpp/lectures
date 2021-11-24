@@ -15,12 +15,16 @@ struct Derived : Base {
     }
 };
 
+struct SubDerived : Derived {};
+
 int main() {
-    Derived d;
-    d.foo();
+    SubDerived sd;
+    sd.foo();
+    std::cout << sd.Derived::f << "\n";
+    std::cout << sd.SubDerived::f << "\n";  // Derived::f
 
     // This syntax is for naming only, it does not alter access restrictions
     // (public/protected/private).
-    d.Base::foo();
-    std::cout << d.f << " " << d.Base::f << "\n";
+    sd.Base::foo();
+    std::cout << sd.f << " " << sd.Base::f << "\n";
 }

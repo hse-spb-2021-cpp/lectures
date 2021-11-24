@@ -7,12 +7,15 @@ struct Base;
 struct BaseVtable {
     using print_impl_ptr = void(*)(Base*);
     print_impl_ptr print_ptr;
+
+    // We may also add other information about type, e.g.:
+    // std::string type_name;
 };
 
 struct Base {
-    static BaseVtable BASE_VTABLE;
+    static const BaseVtable BASE_VTABLE;
 
-    BaseVtable *vtable = &BASE_VTABLE;
+    const BaseVtable *vptr = &BASE_VTABLE;
     int x = 10;
 
     static void print_impl(Base *b) {
@@ -20,10 +23,10 @@ struct Base {
     }
 
     void print() {
-        vtable->print_ptr(this);
+        vptr->print_ptr(this);
     }
 };
-BaseVtable Base::BASE_VTABLE{Base::print_impl};
+const BaseVtable Base::BASE_VTABLE{Base::print_impl};
 
 struct Derived;
 struct DerivedVtable : BaseVtable {
@@ -32,7 +35,7 @@ struct DerivedVtable : BaseVtable {
 };
 
 struct Derived : Base {
-    static DerivedVtable DERIVED_VTABLE;
+    static const DerivedVtable DERIVED_VTABLE;
 
     int y = 20;
 
@@ -46,14 +49,14 @@ struct Derived : Base {
     }
 
     Derived() {
-        vtable = &DERIVED_VTABLE;
+        vptr = &DERIVED_VTABLE;
     }
 
     void mega_print() {
-        static_cast<DerivedVtable*>(vtable)->mega_print_ptr(this);
+        static_cast<const DerivedVtable*>(vptr)->mega_print_ptr(this);
     }
 };
-DerivedVtable Derived::DERIVED_VTABLE{Derived::print_impl, Derived::mega_print_impl};
+const DerivedVtable Derived::DERIVED_VTABLE{Derived::print_impl, Derived::mega_print_impl};
 
 struct SubDerivedVtable : DerivedVtable {
     // no new "virtual" functions
@@ -69,7 +72,7 @@ struct SubDerived : Derived {
     }
 
     SubDerived() {
-        vtable = &SUBDERIVED_VTABLE;
+        vptr = &SUBDERIVED_VTABLE;
     }
 };
 SubDerivedVtable SubDerived::SUBDERIVED_VTABLE{Derived::print_impl, SubDerived::mega_print_impl};
@@ -78,8 +81,8 @@ int main() {
     SubDerived sd;
     sd.print();
     // Base::print() -->
-    //     vtable == &SUBDERIVED_VTABLE -->
-    //     vtable->print_ptr == Derived::print_impl
+    //     vptr == &SUBDERIVED_VTABLE -->
+    //     vptr->print_ptr == Derived::print_impl
     sd.mega_print();
 
     Derived &d = sd;
