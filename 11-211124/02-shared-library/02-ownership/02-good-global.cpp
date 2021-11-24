@@ -10,10 +10,18 @@
 #define boost_dll_import_symbol ::boost::dll::import
 #endif
 
+boost::shared_ptr<abstract_plugin> plugin_loaded;
+
 std::unique_ptr<base> load_from_plugin() {
     boost::shared_ptr<abstract_plugin> plugin =
         boost_dll_import_symbol<abstract_plugin>(
             "one", "plugin", boost::dll::load_mode::append_decorations);
+
+    // Careful: do not unload previous plugin accidentally.
+    assert(!plugin_loaded || plugin_loaded == plugin);
+    // shared_ptr can be copied: the last owner destroys the plugin
+    plugin_loaded = plugin;
+
     auto result = plugin->create_base();
     std::cout << "(1) saying hi by" << result.get() << "\n";
     result->say_non_virtual_hi();
@@ -23,14 +31,8 @@ std::unique_ptr<base> load_from_plugin() {
 
 int main() {
     std::unique_ptr<base> result = load_from_plugin();
-
-    /// Uncomment to see what happens if the object itself is destroyed, not its
-    /// virtual tables.
-    // delete result.get();
     std::cout << "(2) saying hi by" << result.get() << "\n";
     result->say_non_virtual_hi();
-    // OOPS: the DLL is already unloaded, all allocated data is freed.
-    // 'result' is available, but its virtual tables are not.
-    result->say_hi();
+    result->say_hi();  // ok
     return 0;
 }

@@ -16,5 +16,8 @@ add_library(one SHARED plugin_one.cpp)
 add_executable(01-bad 01-bad.cpp)
 target_link_libraries(01-bad ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
 
-add_executable(02-good 02-good.cpp)
-target_link_libraries(02-good ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+add_executable(02-good-global 02-good-global.cpp)
+target_link_libraries(02-good-global ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+
+add_executable(03-good 03-good.cpp)
+target_link_libraries(03-good ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})

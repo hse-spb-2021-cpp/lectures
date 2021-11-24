@@ -6,7 +6,8 @@
 class plugin_one : public abstract_plugin {
 public:
     plugin_one() {
-        std::cout << "plugin_one: sizeof(std::string) = " << sizeof(std::string) << "\n";
+        std::cout << "plugin_one: sizeof(std::string) = " << sizeof(std::string)
+                  << "\n";
     }
 
     const std::string &get_string() override {
