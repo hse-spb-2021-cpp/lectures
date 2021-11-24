@@ -1,4 +1,4 @@
-#include <boost/dll/import.hpp>  // for import_alias
+#include <boost/dll/import.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/version.hpp>
 #include <iostream>
