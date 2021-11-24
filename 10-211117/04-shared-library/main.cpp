@@ -15,12 +15,11 @@ namespace plugins_demo {
 int main() {
     namespace fs = boost::filesystem;
 
-    std::vector<boost::shared_ptr<plugins_demo::abstract_plugin>> plugins;
+    std::vector<boost::shared_ptr<abstract_plugin>> plugins;
     for (auto &f : fs::directory_iterator(fs::path("plugins/"))) {
         std::cout << "Loading from " << f << "\n";
         plugins.emplace_back(
-            boost_dll_import_symbol<plugins_demo::abstract_plugin>(f.path(),
-                                                                   "plugin"));
+            boost_dll_import_symbol<abstract_plugin>(f.path(), "plugin"));
         // TODO: dll::load_mode::append_decorations
     }
 
