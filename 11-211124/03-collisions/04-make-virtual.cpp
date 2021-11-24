@@ -26,10 +26,10 @@ int main() {
     Base &b = sd;
 
     sd.foo();  // SubDerived
-    d.foo();  // SubDerived
-    b.foo();  // Base
+    d.foo();   // SubDerived
+    b.foo();   // Base
 
     sd.SubDerived::foo();  // SubDerived
-    sd.Derived::foo();  // Derived
-    sd.Base::foo();  // Base
+    sd.Derived::foo();     // Derived
+    sd.Base::foo();        // Base
 }

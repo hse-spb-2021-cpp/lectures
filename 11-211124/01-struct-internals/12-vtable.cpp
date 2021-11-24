@@ -5,7 +5,7 @@
 struct Base;
 
 struct BaseVtable {  // virtual functions table
-    using print_impl_ptr = void(*)(Base*);
+    using print_impl_ptr = void (*)(Base *);
     print_impl_ptr print_ptr;
     // pretty_print_impl_ptr pretty_print_ptr;
     // read_impl_ptr read_ptr;
@@ -36,7 +36,7 @@ struct Derived : Base {
     int y = 20;
 
     static void print_impl(Base *b) {
-        Derived *d = static_cast<Derived*>(b);
+        Derived *d = static_cast<Derived *>(b);
         std::cout << "x = " << d->x << ", y = " << d->y << "\n";
     }
 
@@ -47,7 +47,7 @@ struct Derived : Base {
 const BaseVtable Derived::DERIVED_VTABLE{Derived::print_impl};
 
 int main() {
-    Base b;  // vptr == &BASE_VTABLE, x
+    Base b;     // vptr == &BASE_VTABLE, x
     Derived d;  // vptr == &DERIVED_VTABLE, x, y
     b.print();
     d.print();

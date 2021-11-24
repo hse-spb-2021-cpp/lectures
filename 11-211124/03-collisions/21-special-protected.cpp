@@ -12,7 +12,8 @@ protected:
 };
 
 struct Derived : Base {
-    Derived() {}
+    Derived() {
+    }
 
 protected:
     Derived(const Derived &) = default;

@@ -38,7 +38,7 @@ int main() {
     Derived d;
     d.foo(1.2);  // double
     d.foo(1);    // double :(
-    d.foo();  // compilation error?
+    d.foo();     // compilation error?
     // Rule: if the derived class has a method called `foo`, do not look at
     //       base's methods, "hide" them.
 

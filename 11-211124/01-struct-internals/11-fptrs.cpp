@@ -5,7 +5,7 @@
 struct Base {
     int x = 10;
 
-    using print_impl_ptr = void(*)(Base*);
+    using print_impl_ptr = void (*)(Base *);
     static void print_impl(Base *b) {
         std::cout << "x = " << b->x << "\n";
     }
@@ -23,7 +23,7 @@ struct Derived : Base {
     int y = 20;
 
     static void print_impl(Base *b) {
-        Derived *d = static_cast<Derived*>(b);
+        Derived *d = static_cast<Derived *>(b);
         std::cout << "x = " << d->x << ", y = " << d->y << "\n";
     }
 

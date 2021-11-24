@@ -5,7 +5,7 @@
 struct Base;
 
 struct BaseVtable {
-    using print_impl_ptr = void(*)(Base*);
+    using print_impl_ptr = void (*)(Base *);
     print_impl_ptr print_ptr;
 
     // We may also add other information about type, e.g.:
@@ -30,7 +30,7 @@ const BaseVtable Base::BASE_VTABLE{Base::print_impl};
 
 struct Derived;
 struct DerivedVtable : BaseVtable {
-    using mega_print_impl_ptr = void(*)(Derived*);
+    using mega_print_impl_ptr = void (*)(Derived *);
     mega_print_impl_ptr mega_print_ptr;
 };
 
@@ -40,7 +40,7 @@ struct Derived : Base {
     int y = 20;
 
     static void print_impl(Base *b) {
-        Derived *d = static_cast<Derived*>(b);
+        Derived *d = static_cast<Derived *>(b);
         std::cout << "x = " << d->x << ", y = " << d->y << "\n";
     }
 
@@ -53,10 +53,11 @@ struct Derived : Base {
     }
 
     void mega_print() {
-        static_cast<const DerivedVtable*>(vptr)->mega_print_ptr(this);
+        static_cast<const DerivedVtable *>(vptr)->mega_print_ptr(this);
     }
 };
-const DerivedVtable Derived::DERIVED_VTABLE{Derived::print_impl, Derived::mega_print_impl};
+const DerivedVtable Derived::DERIVED_VTABLE{Derived::print_impl,
+                                            Derived::mega_print_impl};
 
 struct SubDerivedVtable : DerivedVtable {
     // no new "virtual" functions
@@ -67,7 +68,7 @@ struct SubDerived : Derived {
     int z = 20;
 
     static void mega_print_impl(Derived *b) {
-        SubDerived *sd = static_cast<SubDerived*>(b);
+        SubDerived *sd = static_cast<SubDerived *>(b);
         std::cout << "megaprint! y = " << sd->y << ", z = " << sd->z << "\n";
     }
 
@@ -75,7 +76,8 @@ struct SubDerived : Derived {
         vptr = &SUBDERIVED_VTABLE;
     }
 };
-SubDerivedVtable SubDerived::SUBDERIVED_VTABLE{Derived::print_impl, SubDerived::mega_print_impl};
+SubDerivedVtable SubDerived::SUBDERIVED_VTABLE{Derived::print_impl,
+                                               SubDerived::mega_print_impl};
 
 int main() {
     SubDerived sd;

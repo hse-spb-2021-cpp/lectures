@@ -12,8 +12,8 @@ protected:
 };
 
 struct Derived : Base {
-    // All special methods are re-generated in each class and are public by default.
-    // They need non-deleted and at least 'protected' parent methods.
+    // All special methods are re-generated in each class and are public by
+    // default. They need non-deleted and at least 'protected' parent methods.
 };
 
 int main() {

@@ -10,7 +10,7 @@ struct Derived : Base {};
 
 struct SubDerived : Derived {
     void foo() override {
-        Base::foo();  // non-virtual call: Base
+        Base::foo();     // non-virtual call: Base
         Derived::foo();  // non-virtual call: Derived --> Base
         std::cout << "Derived\n";
     }
