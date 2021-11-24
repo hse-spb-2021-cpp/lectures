@@ -15,7 +15,7 @@ struct Derived : Base {
 
 int main() {
     Derived d;
-    d.foo();        // Base, Derived
+    d.foo();        // virtual call: Base, Derived
     d.Base::foo();  // non-virtual call: Base
 
     std::cout << "=====\n";

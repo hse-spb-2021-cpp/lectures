@@ -29,6 +29,7 @@ int main() {
     d.foo();  // SubDerived
     b.foo();  // Base
 
+    sd.SubDerived::foo();  // SubDerived
     sd.Derived::foo();  // Derived
     sd.Base::foo();  // Base
 }

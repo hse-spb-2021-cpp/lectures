@@ -11,6 +11,8 @@ struct Base {
     }
 
     print_impl_ptr print_ptr = print_impl;
+    // pretty_print_impl_ptr pretty_print_ptr;
+    // read_impl_ptr read_ptr;
 
     void print() {
         print_ptr(this);
@@ -40,4 +42,6 @@ int main() {
     db.print();
 
     std::cout << sizeof(Base) << ", " << sizeof(Derived) << "\n";
+
+    [[maybe_unused]] std::vector<Derived> vec(1'000'000);
 }

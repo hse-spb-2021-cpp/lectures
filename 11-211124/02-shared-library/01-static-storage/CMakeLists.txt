@@ -11,7 +11,7 @@ find_package(Boost 1.71 REQUIRED filesystem)  # Required by Boost.DLL
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
-add_library(one SHARED plugin_one.cpp)
+add_library(one SHARED plugin_one.cpp print_global_var.cpp)
 
-add_executable(01-careful 01-careful.cpp)
+add_executable(01-careful 01-careful.cpp print_global_var.cpp)
 target_link_libraries(01-careful ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})

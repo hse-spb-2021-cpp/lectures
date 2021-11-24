@@ -55,25 +55,31 @@ struct Derived : Base {
 };
 DerivedVtable Derived::DERIVED_VTABLE{Derived::print_impl, Derived::mega_print_impl};
 
+struct SubDerivedVtable : DerivedVtable {
+    // no new "virtual" functions
+};
 struct SubDerived : Derived {
-    static DerivedVtable SUBDERIVED_VTABLE;
+    static SubDerivedVtable SUBDERIVED_VTABLE;
 
     int z = 20;
 
     static void mega_print_impl(Derived *b) {
         SubDerived *sd = static_cast<SubDerived*>(b);
-        std::cout << "megapring! y = " << sd->y << ", z = " << sd->z << "\n";
+        std::cout << "megaprint! y = " << sd->y << ", z = " << sd->z << "\n";
     }
 
     SubDerived() {
         vtable = &SUBDERIVED_VTABLE;
     }
 };
-DerivedVtable SubDerived::SUBDERIVED_VTABLE{Derived::print_impl, SubDerived::mega_print_impl};
+SubDerivedVtable SubDerived::SUBDERIVED_VTABLE{Derived::print_impl, SubDerived::mega_print_impl};
 
 int main() {
     SubDerived sd;
     sd.print();
+    // Base::print() -->
+    //     vtable == &SUBDERIVED_VTABLE -->
+    //     vtable->print_ptr == Derived::print_impl
     sd.mega_print();
 
     Derived &d = sd;
@@ -82,4 +88,5 @@ int main() {
 
     Base &b = sd;
     b.print();
+    Base::print_impl(&sd);
 }

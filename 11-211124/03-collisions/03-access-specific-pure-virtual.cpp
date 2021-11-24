@@ -15,6 +15,8 @@ int main() {
     Derived d;
     d.foo();
     d.Base::foo();  // Linkage error.
+
+    // Base b;  // still abstract!
 }
 
 void Base::foo() {

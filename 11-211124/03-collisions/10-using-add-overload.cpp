@@ -26,12 +26,13 @@ struct Derived : Base {
 };
 
 struct SubDerived : Derived {  // Has the same overloads as Derived
-}
+};
 
 int main() {
     Base b;
     b.foo(1);    // int
     b.foo(1.2);  // int
+    b.foo();     // ok
 
     Derived d;
     d.foo(1.2);  // double

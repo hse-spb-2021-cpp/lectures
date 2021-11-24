@@ -4,15 +4,19 @@
 
 struct Base;
 
-struct BaseVtable {
+struct BaseVtable {  // virtual functions table
     using print_impl_ptr = void(*)(Base*);
     print_impl_ptr print_ptr;
+    // pretty_print_impl_ptr pretty_print_ptr;
+    // read_impl_ptr read_ptr;
+
+    // Can also add: `std::string name`, etc...
 };
 
 struct Base {
     static BaseVtable BASE_VTABLE;
 
-    BaseVtable *vtable = &BASE_VTABLE;
+    BaseVtable *vptr = &BASE_VTABLE;
     int x = 10;
 
     static void print_impl(Base *b) {
@@ -20,7 +24,7 @@ struct Base {
     }
 
     void print() {
-        vtable->print_ptr(this);
+        vptr->print_ptr(this);
     }
 };
 BaseVtable Base::BASE_VTABLE{Base::print_impl};
@@ -36,7 +40,7 @@ struct Derived : Base {
     }
 
     Derived() {
-        vtable = &DERIVED_VTABLE;
+        vptr = &DERIVED_VTABLE;
     }
 };
 BaseVtable Derived::DERIVED_VTABLE{Derived::print_impl};
@@ -51,4 +55,6 @@ int main() {
     db.print();
 
     std::cout << sizeof(Base) << ", " << sizeof(Derived) << "\n";
+
+    [[maybe_unused]] std::vector<Derived> vec(1'000'000);
 }

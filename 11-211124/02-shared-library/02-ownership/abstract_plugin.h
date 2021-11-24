@@ -21,7 +21,6 @@ public:
     void say_hi() override {
         std::cout << "hi from derived1\n";
     }
-    virtual ~derived1() = default;
 };
 
 class BOOST_SYMBOL_VISIBLE abstract_plugin {

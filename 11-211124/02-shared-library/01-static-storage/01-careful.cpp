@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "abstract_plugin.h"
+#include "print_global_var.h"
 
 #if BOOST_VERSION >= 107600
 #define boost_dll_import_symbol ::boost::dll::import_symbol
@@ -18,6 +19,8 @@ int main() {
     std::cout << "main: global_var is at " << &global_var() << "\n";
     global_var() += 10;
     std::cout << "main: global_var = " << global_var() << "\n";
+    std::cout << "main: ";
+    print_global_var();
 
     plugin->foo();
 
