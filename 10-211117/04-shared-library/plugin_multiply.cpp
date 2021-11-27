@@ -12,8 +12,8 @@ public:
         // The following line will cause 'undefined reference' error.
         // foo();
         // Windows: linker error during DLL compilation.
-        // Linux: during SO loading in `main.cpp`.
-        // macOS: TODO.
+        // Linux: loader error during .so loading in `main.cpp`, very similar to the linker. You may implement foo() in main.cpp.
+        // macOS: linker error during .dylib compilation.
     }
 
     const std::string &name() const override {
