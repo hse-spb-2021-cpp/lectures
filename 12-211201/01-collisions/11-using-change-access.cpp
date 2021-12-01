@@ -39,9 +39,9 @@ struct SubSubDerived : SubDerived {
     // using Derived::magic;
     // using SubDerived::magic;
     void magic3() {
-        // magic();
         Base::magic();
         Derived::magic();
         // SubDerived::magic();
+        // magic();  // SubDerived::magic()
     }
 };
