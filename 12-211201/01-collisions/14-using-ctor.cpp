@@ -20,6 +20,7 @@ struct Derived : Base {
 
 int main() {
     [[maybe_unused]] Derived d1{10};
-    [[maybe_unused]] Derived d2 = {10, 20};
+    [[maybe_unused]] Derived d2a{10, 20};
+    [[maybe_unused]] Derived d2b = {10, 20};
     [[maybe_unused]] Derived d3 = {10, 20, 30};
 }

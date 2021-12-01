@@ -12,9 +12,13 @@ protected:
 
 public:
     ~Base() = default;
+
+    int field1;  // Should be copied/moved by 4 special functions.
 };
 
 class Derived : public Base {
+    int field2;  // Should be copied/moved by 4 special functions => should generate them again, they call parent's to deal with field1.
+
     // All special methods are re-generated in each class and are public by
     // default (both for `struct` and `class`).
     // They need non-deleted and at least 'protected' parent methods.

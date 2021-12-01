@@ -1,5 +1,10 @@
 namespace ns2 {
 struct Bar;
+
+struct Baz {
+    struct Botva {
+    };
+};
 }
 
 namespace ns1 {
@@ -8,6 +13,7 @@ private:
     int x = 0;
 
     friend /*struct*/ ns2::Bar;  // struct is optional if 'ns2::Bar' exists.
+    // TODO: can we make a nested struct a friend? Yes we can. We cannot do cycles, though.
 };
 }
 

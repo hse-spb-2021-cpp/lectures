@@ -31,7 +31,10 @@ struct SubDerived : Derived {
     // using Base::foo;
 };
 
-struct SubSubDerived : SubDerived {  // Has the same overloads as Derived
+struct SubSubDerived : SubDerived {
+    // Has the same overloads as Derived, unless we add new overloads:
+    void foo(int, int, int) {}
+    using Derived::foo;
 };
 
 int main() {
@@ -50,4 +53,7 @@ int main() {
     Derived &d = sd;
     d.foo(1);    // int
     d.foo(1.2);  // int
+
+    SubSubDerived ssd;
+    ssd.foo(1.2);  // int, because of 'using Derived::foo' instead of 'using SubDerived::foo'
 }

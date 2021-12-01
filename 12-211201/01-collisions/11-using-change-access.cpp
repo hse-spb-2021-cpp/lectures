@@ -35,7 +35,7 @@ int main() {
 }
 
 struct SubSubDerived : SubDerived {
-    // using Base::magic;  // TODO: not sure why.
+    // using Base::magic;  // TODO: not sure why, g++ and clang++ disagree.
     // using Derived::magic;  // TODO: not sure why.
     // using SubDerived::magic;
     void magic3() {

@@ -10,6 +10,7 @@ private:
 
 public:
     void foo(double) {}
+    // void foo(int, int = 10) {}  // ambiguous
 };
 
 int main() {

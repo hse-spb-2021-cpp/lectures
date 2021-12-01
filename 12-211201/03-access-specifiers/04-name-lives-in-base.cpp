@@ -16,12 +16,16 @@ private:
 };
 
 void Derived::foo() {
+    foo();
     derived();
     // SubDerived::base();
     SubDerived::derived();  // Actually a name for Derived::derived(), there is no 'using'
     // SubDerived::subderived();
 
     SubDerived sd;
+    sd.foo();
+    sd.Derived::foo();
+    sd.SubDerived::foo();
     sd.derived();
     sd.SubDerived::derived();
 }

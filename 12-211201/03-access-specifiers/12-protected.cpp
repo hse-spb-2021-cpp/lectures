@@ -8,8 +8,6 @@ protected:
     static void base_static(SubDerived &);
 };
 
-struct OtherDerived : Base {};
-
 struct Derived : Base {
 protected:
     void derived_method(SubDerived &);
@@ -17,12 +15,14 @@ protected:
 
     friend struct FriendOfDerived;
 };
+struct OtherDerived : Base {};
 
 struct SubDerived : Derived {
 protected:
     void subderived_method(SubDerived &);
     static void subderived_static(SubDerived &);
 };
+struct OtherSubDerived : Derived {};
 
 void Base::base_method(SubDerived &sd) {
     // Base is not a derived class of Derived or SubDerived
