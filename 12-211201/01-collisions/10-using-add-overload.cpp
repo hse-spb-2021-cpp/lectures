@@ -23,9 +23,10 @@ struct SubDerived : Derived {
     }
 
     // Will hide, no compilation error.
-    // void foo(int) { std::cout << "SubDerived int\n"; }
+    // void foo(int x) { std::cout << "SubDerived int\n"; Derived::foo(x); }
+    // void foo() { std::cout << "SubDerived no args\n"; Derived::foo(); }
 
-    // Introduce members of Base/Derived called 'foo' into the definition.
+    // Introduce members of Base/Derived called 'foo' into the definition, "unhide".
     // using Derived::foo;
     // using Base::foo;
 };

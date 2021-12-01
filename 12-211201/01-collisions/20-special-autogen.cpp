@@ -9,11 +9,15 @@ protected:
     Base(Base &&) = default;
     Base &operator=(const Base &) = default;
     Base &operator=(Base &&) = default;
+
+public:
+    ~Base() = default;
 };
 
-struct Derived : Base {
+class Derived : public Base {
     // All special methods are re-generated in each class and are public by
-    // default. They need non-deleted and at least 'protected' parent methods.
+    // default (both for `struct` and `class`).
+    // They need non-deleted and at least 'protected' parent methods.
 };
 
 int main() {

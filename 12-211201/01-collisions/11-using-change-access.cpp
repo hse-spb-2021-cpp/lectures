@@ -35,12 +35,12 @@ int main() {
 }
 
 struct SubSubDerived : SubDerived {
-    // using Base::magic;
-    // using Derived::magic;
+    // using Base::magic;  // TODO: not sure why.
+    // using Derived::magic;  // TODO: not sure why.
     // using SubDerived::magic;
     void magic3() {
-        Base::magic();
-        Derived::magic();
+        Base::magic();  // TODO: not sure why.
+        Derived::magic();  // TODO: not sure why.
         // SubDerived::magic();
         // magic();  // SubDerived::magic()
     }

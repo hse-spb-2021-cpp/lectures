@@ -15,7 +15,7 @@ struct Derived : Base {
     Derived() {
     }
 
-protected:
+protected:  // or private
     Derived(const Derived &) = default;
     Derived(Derived &&) = default;
     Derived &operator=(const Derived &) = default;
