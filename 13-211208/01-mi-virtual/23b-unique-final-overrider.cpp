@@ -1,14 +1,13 @@
 #include <iostream>
 
 struct Base {
-    virtual void foo() = 0;
+    virtual void foo() { std::cout << "Base::foo()\n"; }
     virtual void bar() = 0;
 };
 
 struct X : virtual Base {
     void foo() override {
         std::cout << "X::foo()\n";
-        bar();  // https://isocpp.org/wiki/faq/multiple-inheritance#mi-delegate-to-sister
     }
 };
 
@@ -18,10 +17,11 @@ struct Y : virtual Base {
     }
 };
 
-struct Derived : X, Y {
+struct Derived : X, Y {  // ok: X::foo(), Y::bar()
 };
 
 int main() {
-    Derived a;
-    a.foo();  // X::foo() --> Base::bar() ~~ Y::bar()
+    Derived d;
+    d.foo();
+    d.bar();
 }

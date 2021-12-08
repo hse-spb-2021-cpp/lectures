@@ -22,6 +22,8 @@ int main() {
     std::cout << "\n";
 
     // needs virtual inheritance!
+    // istream : virtual ios
+    // ostream : virtual ios
     std::ios &base = s2;
     std::cout << static_cast<bool>(base) << "\n";
     std::cout << base.fail() << "\n";

@@ -34,7 +34,7 @@ int main() {
     std::cout << &x2 << " " << &b2 << "\n";  // Another offset
 
     // Downcast from a virtual base is not static:
-    // static_cast<X&>(b1);  
+    // static_cast<X&>(b1);
     // static_cast<X&>(b2);
     // dynamic_cast<X&>(b1);   // ok if the source type (Base) is polymorphic
     [[maybe_unused]] Derived &d1b = static_cast<Derived&>(x1);  // downcast from a non-virtual base is ok

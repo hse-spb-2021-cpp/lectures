@@ -52,7 +52,6 @@ int main() {
         std::cout << "    .group    = " << &ms.group << "\n";
         std::cout << "    Person    = " << &p << "\n";
         std::cout << "    .name     = " << &ms.name << "\n";
-        [[maybe_unused]] MagicStudent &ms2 = static_cast<MagicStudent&>(p);
     }
 
     {

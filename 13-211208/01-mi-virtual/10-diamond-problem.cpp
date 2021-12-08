@@ -15,7 +15,7 @@ struct Student : Person {
     std::string group;
     Student(std::string name_, std::string group_) : Person(std::move(name_)), group(std::move(group_)) {}
 };
-struct MagicStudent : Employee, Student {
+struct MagicStudent : /*Person, */ Employee, Student {
     MagicStudent(std::string name_, std::string employer_, std::string group_)
         : Employee(name_, std::move(employer_))
         , Student(name_, std::move(group_)) {}  // FIXME: two copies of the same name

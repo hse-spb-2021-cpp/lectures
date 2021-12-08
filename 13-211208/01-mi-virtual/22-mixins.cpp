@@ -22,7 +22,7 @@ struct Derived : X, Y {
 
 int main() {
     Derived a;
-    // Non-ambiguous if all 'Base' are virtual
+    // Non-ambiguous if all 'Base' are virtual, otherwise 'Derived' is abstract.
     a.foo();
     a.bar();
 }

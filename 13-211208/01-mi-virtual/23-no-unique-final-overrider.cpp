@@ -13,7 +13,7 @@ struct X : virtual Base {
 
 struct Y : virtual Base {
     void foo() override {
-        std::cout << "X::foo()\n";
+        std::cout << "Y::foo()\n";
     }
     void bar() override {
         std::cout << "Y::bar()\n";

@@ -20,7 +20,7 @@ Class diagram:
 PieceOfArt   PieceOfArt
     ^            ^
     |            |
-  Music        Music
+  Music        Lyrics
     ^            ^
       \        /
         \    /
@@ -36,7 +36,7 @@ Layout is guaranteed, exact sides and padding vary:
 | | | +date      |      | | | +date      |       |        |
 | | +------------+      | | +------------+       |        |
 | |   Music             | |   Lyrics             |        |
-| |                +bmp | |                +text |        |
+| |                +bpm | |                +text |        |
 | +---------------------+ +----------------------+        |
 | Song                                                    |
 |                                                  +album |
