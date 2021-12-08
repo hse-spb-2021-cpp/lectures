@@ -21,6 +21,11 @@ struct Y : virtual Base {
 };
 
 struct Derived : X, Y {  // no unique final overrider for 'virtual void Base::foo()'
+    /*void foo() override {
+        std::cout << "Derived::foo()\n";
+        X::foo();
+        Y::foo();
+    }*/
 };
 
 int main() {

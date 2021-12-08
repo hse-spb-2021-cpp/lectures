@@ -17,8 +17,7 @@ struct Y : virtual /* !!! */ Base {
     }
 };
 
-struct Derived : X, Y {
-};
+struct Derived : X, Y {};
 
 int main() {
     Derived a;

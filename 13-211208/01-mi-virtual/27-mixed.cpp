@@ -1,6 +1,6 @@
 #include <iostream>
 
-struct Base { int data; };
+struct Base { int data = 0; };
 struct X : virtual Base {};
 struct Y : virtual Base {};
 struct Z : Base {};
@@ -22,5 +22,6 @@ int main() {
 
     // In general:
     // 1. For each base B: at most one virtual B, arbitrary number of non-virtual.
-    // 2. Order of initialization: all virtuals, everything else.
+    // 2. Order of initialization: all virtuals (from base to derived), everything else
+    // 3. Order of deinitialization: reverse.
 }

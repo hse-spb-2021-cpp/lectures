@@ -17,8 +17,8 @@ struct X1 : X {
 struct Derived : X, Y {
     void foo() {
         data = 10;  // access is public through Y
-        X::data = 20;  // accessible as well, wow
-        Y::data = 30;  // accessible as well, wow
+        Y::data = 20;  // accessible as well, not surprising
+        X::data = 30;  // accessible as well, wow
     }
 };
 

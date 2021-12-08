@@ -22,9 +22,9 @@ struct Derived3 : virtual Base3 {};
 struct DerivedX : Derived1, Derived12, Derived23, Derived3 {};
 
 struct CompletelyUnrelated {};
-struct DerivedXXX : Derived1, CompletelyUnrelated {};
 
 void foo(Derived1 &d1) {
+    // TODO: 'virtual' inheritance is not important here.
     std::cout << dynamic_cast<Derived3*>(&d1) << "\n";
     std::cout << dynamic_cast<CompletelyUnrelated*>(&d1) << "\n";
 }
@@ -33,6 +33,7 @@ int main() {
     DerivedX a;
     foo(a);
 
+    struct DerivedXXX : Derived1, CompletelyUnrelated {};
     DerivedXXX b;
     foo(b);
 }

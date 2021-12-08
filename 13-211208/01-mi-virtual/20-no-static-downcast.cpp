@@ -25,9 +25,11 @@ int main() {
     Derived d1;
     X &x1 = d1;
     Base &b1 = d1;
+    // d1: (baseptr x_data) (baseptr y_data) base_data
 
     X x2;
-    Base &b2 = x2;
+    Base &b2 = x2; // static_cast<Base&>(x2); is also ok
+    // x2: (baseptr x_data) base_data
 
     std::cout << &d1 << "\n";
     std::cout << &x1 << " " << &b1 << "\n";  // One offset
@@ -36,6 +38,6 @@ int main() {
     // Downcast from a virtual base is not static:
     // static_cast<X&>(b1);
     // static_cast<X&>(b2);
-    // dynamic_cast<X&>(b1);   // ok if the source type (Base) is polymorphic
     [[maybe_unused]] Derived &d1b = static_cast<Derived&>(x1);  // downcast from a non-virtual base is ok
+    // dynamic_cast<X&>(b1);   // ok if the source type (Base) is polymorphic
 }
