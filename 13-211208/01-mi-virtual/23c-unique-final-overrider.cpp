@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct Base {
-    virtual void foo() = 0;
+    virtual void foo() { std::cout << "Base::foo()\n"; }
     virtual void bar() = 0;
 };
 
@@ -12,20 +12,12 @@ struct X : virtual Base {
 };
 
 struct Y : virtual Base {
-    void foo() override {
-        std::cout << "Y::foo()\n";
-    }
     void bar() override {
         std::cout << "Y::bar()\n";
     }
 };
 
-struct Derived : X, Y {  // ok: Derived::foo() calls X::foo() + Y::foo(), Y::bar()
-    void foo() override {
-        std::cout << "Derived::foo()\n";
-        X::foo();
-        Y::foo();
-    }
+struct Derived : X, Y {  // ok: X::foo(), Y::bar()
 };
 
 int main() {
