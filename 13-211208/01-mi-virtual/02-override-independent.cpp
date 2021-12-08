@@ -27,17 +27,17 @@ int main() {
         DerivedSimple ds;
         ds.Base1::foo();
         ds.Base2::foo();
+        // ds.foo();  // ambiguous
         static_cast<Base1&>(ds).foo();
         static_cast<Base2&>(ds).foo();
-        // ds.foo();
     }
     {
         std::cout << "===== DerivedOverride =====\n";
         DerivedOverride dorr;
         dorr.Base1::foo();
         dorr.Base2::foo();
+        dorr.foo();  // non-ambiguous: the one from DerivedOverride
         static_cast<Base1&>(dorr).foo();
         static_cast<Base2&>(dorr).foo();
-        dorr.foo();
     }
 }

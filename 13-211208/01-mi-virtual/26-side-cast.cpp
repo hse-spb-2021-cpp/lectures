@@ -18,9 +18,11 @@ struct Derived3 : virtual Base3 {};
 
 struct DerivedX : Derived1, Derived12, Derived23, Derived3 {};
 
+struct CompletelyUnrelated {};
+
 void foo(Derived1 &d1) {
-    [[maybe_unused]] Derived3 &d3 = dynamic_cast<Derived3&>(d1);
-    std::cout << "ok!\n";
+    std::cout << dynamic_cast<Derived3*>(&d1) << "\n";
+    std::cout << dynamic_cast<CompletelyUnrelated*>(&d1) << "\n";
 }
 
 int main() {
