@@ -38,6 +38,7 @@ int main() {
         std::cout << r2.num << "\n";
         std::cout << r2.denom << "\n";
 
+        // Who is completed first: << or constructor?
         // C++17: behavior is defined;
         // Before C++17: behavior is implementation-defined(???)
         std::cout << "a>" << ratio{10}.num << "<\n";
