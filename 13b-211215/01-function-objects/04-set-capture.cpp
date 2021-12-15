@@ -23,8 +23,7 @@ int main() {
     }
     std::cout << "=====\n";
 
-    v1 = v2;
-    // v1.assign(v2.begin(), v2.end());
+    // v1 = v2;
     // v1 = set(v2.begin(), v2.end(), CloserTo{...});
     for (int x : v1) {
         std::cout << x << "\n";

@@ -34,7 +34,7 @@ struct Foo {
             assert(local_var == 30);
             // assert(local_big[0] == 0);  // Not captured, as unused.
             // operator() is const by default.
-            // member_var++;
+            member_var++;  // this is const, but *this is not.
             // local_var++;
         };
         lambda2();
@@ -45,10 +45,11 @@ struct Foo {
             // operator() is non-const now.
             member_var++;
             local_var++;
+            std::cout << "in lambda 3: local_var new = " << local_var << "\n";
         };
         lambda3();
         std::cout << "sizeof(lamda3) == " << sizeof(lambda3) << "\n";
-        assert(member_var == 11);  // Changed.
+        assert(member_var == 12);  // Changed.
         assert(local_var == 30);  // Unchanged.
 
         // 4
@@ -57,26 +58,26 @@ struct Foo {
             member_var++;  // this->member_var, this is const.
             local_var++;  // local_var is a reference, the reference itself is always const.
         }();
-        assert(member_var == 12);
+        assert(member_var == 13);
         assert(local_var == 31);
 
         // 5
         std::cout << "before lambda 5: " << &member_var << " " << &local_var << "\n";
         auto lambda5 = [=, *this]() mutable {  // [*this, local_var]: full copy of '*this', including unused 'arr'.
             std::cout << "in lambda 5    : " << &member_var << " " << &local_var << "\n";
-            assert(member_var == 12); // 'this' is fully copied.
+            assert(member_var == 13); // 'this' is fully copied.
             assert(local_var == 31);
             member_var++;
             local_var++;
         };
         lambda5();
         std::cout << "sizeof(lambda5) == " << sizeof(lambda5) << "\n";
-        assert(member_var == 12);  // Unchanged.
+        assert(member_var == 13);  // Unchanged.
         assert(local_var == 31);  // Unchanged.
 
         // 6
         [wtf = local_var + member_var]() {
-            assert(wtf == 43);
+            assert(wtf == 44);
         }();
         [local_var = local_var * 2]() {
             assert(local_var == 62);

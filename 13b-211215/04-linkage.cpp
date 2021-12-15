@@ -1,4 +1,5 @@
 // https://en.cppreference.com/w/cpp/language/storage_duration
+#include <string>
 
 // Linkage is a property of object/reference/function/type:
 // 1. No linkage: only from the current scope

@@ -27,7 +27,7 @@ int main() {
         c2(3);  // 10 3
         c2(4);  // 11 4
         c2(5);  // 12 5
-        // std::reference_wrapper implements operator() in addition to get() 
+        // std::reference_wrapper implements operator() only in addition to get()
         cwrap(6);  // 12 6
         cwrap(7);  // 13 7
         cwrap2(8);  // 14 8

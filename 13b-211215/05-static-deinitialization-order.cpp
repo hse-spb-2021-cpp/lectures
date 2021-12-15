@@ -15,6 +15,7 @@ std::vector<int> &some_vector() {
     return vec;
 
     // Better option: never deinitialize
+    // https://isocpp.org/wiki/faq/ctors#construct-on-first-use-v2
     // static auto *vec = new std::vector<int>{1, 2, 3};
     // return *vec;
 }

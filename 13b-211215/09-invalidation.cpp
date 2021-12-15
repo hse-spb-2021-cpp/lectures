@@ -11,6 +11,8 @@ int main() {
         s.insert(5);
         s.insert(15);
         std::cout << x << " " << *x_it << "\n";  // No invalidation
+        s.erase(10);
+        // x and x_it are invalid.
     }
     {
         std::deque<int> d{10};
