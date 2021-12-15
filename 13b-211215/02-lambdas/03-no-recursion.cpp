@@ -20,6 +20,7 @@ int main() {
             int operator()(int n) {
                 if (n <= 1) return n;
                 return operator()(n - 1) + operator()(n - 2);
+                // return (*this)(n - 1) + (*this)(n - 2);
             }
         } fib;
     }

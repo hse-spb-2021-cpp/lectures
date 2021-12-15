@@ -5,6 +5,8 @@
 
 typedef std::vector<int> vi;
 using pii = std::pair<int, int>;
+// Please do not #define: it does not respect namespaces/private/public
+// https://stackoverflow.com/a/1666375/767632
 
 int main() {
     vi v1(10);

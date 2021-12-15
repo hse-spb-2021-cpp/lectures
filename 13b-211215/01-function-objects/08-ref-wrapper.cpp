@@ -16,7 +16,7 @@ int main() {
     {
         Counter c;
         Counter c2 = c;  // copy
-        std::reference_wrapper<Counter> cwrap = c;  // reference to c
+        std::reference_wrapper<Counter> cwrap = c;  // copyable reference to c OR raw pointers with operator()
         assert(&cwrap.get() == &c);
         auto cwrap2 = cwrap;  // reference to c
         auto cwrap3 = std::ref(c);  // std::reference_wrapper<Counter>

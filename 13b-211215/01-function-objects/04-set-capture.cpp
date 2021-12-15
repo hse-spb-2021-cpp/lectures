@@ -24,7 +24,7 @@ int main() {
     std::cout << "=====\n";
 
     // v1 = v2;
-    // v1 = set(v2.begin(), v2.end(), CloserTo{...});
+    // v1 = std::set(v1.begin(), v1.end(), CloserTo{5});
     for (int x : v1) {
         std::cout << x << "\n";
     }

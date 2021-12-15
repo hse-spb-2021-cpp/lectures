@@ -63,7 +63,7 @@ struct Foo {
 
         // 5
         std::cout << "before lambda 5: " << &member_var << " " << &local_var << "\n";
-        auto lambda5 = [=, *this]() mutable {  // [*this, local_var]: full copy of '*this', including unused 'arr'.
+        auto lambda5 = [=, *this]() mutable {  // C++17: [*this, local_var]: full copy of '*this', including unused 'arr'.
             std::cout << "in lambda 5    : " << &member_var << " " << &local_var << "\n";
             assert(member_var == 13); // 'this' is fully copied.
             assert(local_var == 31);
@@ -76,7 +76,7 @@ struct Foo {
         assert(local_var == 31);  // Unchanged.
 
         // 6
-        [wtf = local_var + member_var]() {
+        [wtf = local_var + member_var]() {  // C++14
             assert(wtf == 44);
         }();
         [local_var = local_var * 2]() {
@@ -85,7 +85,7 @@ struct Foo {
         assert(local_var == 31);
 
         // 7
-        [&local_var = local_var]() {
+        [&local_var = local_var]() {  // Shortcut: [&local_var] (even in C++11)
             assert(local_var == 31);
             local_var++;
         }();
