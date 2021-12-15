@@ -8,7 +8,7 @@ struct PersonCpp03 {
 
 struct PersonCpp11 {
     std::string name;
-    PersonCpp11(std::string name_) : name(std::move(name_)) {}  // 1 initialization name_ + 1 move + 1 destruct
+    PersonCpp11(std::string name_) : name(std::move(name_)) {}  // 1 initialization name_ + 1 move + 1 destruct of empty
 };
 
 std::string create_name() {
@@ -25,8 +25,8 @@ int main() {
     }
     {
         std::string x = "Egor";
-        [[maybe_unused]] PersonCpp11 p1(x);  // 1 copy + 1 move + 1 destruct
-        [[maybe_unused]] PersonCpp11 p2("Egor");  // 1 init, 1-2 move, 1-2 destruct
-        [[maybe_unused]] PersonCpp11 p3(create_name());  // 1 init inside create_name(), 1-2 move, 1-2 destruct
+        [[maybe_unused]] PersonCpp11 p1(x);  // 1 copy + 1 move + 1 destruct of empty
+        [[maybe_unused]] PersonCpp11 p2("Egor");  // 1 init, 1-2 move, 1-2 destruct of empty
+        [[maybe_unused]] PersonCpp11 p3(create_name());  // 1 init inside create_name(), 1-3 move, 1-3 destruct of empty
     }
 }

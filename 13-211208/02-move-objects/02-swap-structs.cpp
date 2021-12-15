@@ -18,11 +18,11 @@ int main() {
 
 /*
 // C++03
-void swap(T &a, &b) {
+void swap(T &a, T &b) {
     T tmp = a;
     a = b;
     b = tmp;
-} 
+}
 
 // C++11
 void swap(T &a, &b) {
