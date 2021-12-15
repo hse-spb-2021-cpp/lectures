@@ -12,7 +12,7 @@ struct Greater {
 
 int main() {
     std::vector<int> v{1, 2, 3, 4, 5, 6, 7, 8};
-    Greater g;
+    const Greater g;  // 'const' is optional, just to demonstrate const-qualifier
     assert(g(5, 4));
     assert(!g(4, 5));
     sort(v.begin(), v.end(), g /* Greater() */);

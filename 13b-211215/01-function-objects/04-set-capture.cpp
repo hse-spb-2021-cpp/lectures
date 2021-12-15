@@ -6,7 +6,7 @@
 struct CloserTo {
     int center;
 
-    bool operator()(int a, int b) const {
+    bool operator()(int a, int b) const {  // 'const' is important
         return std::abs(a - center) < std::abs(b - center);
     }
 };
