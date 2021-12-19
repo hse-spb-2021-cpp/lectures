@@ -1,6 +1,6 @@
 #include <iostream>
 
-const char *strcat(const char *a, const char *b) {
+const char *strcat_alloc(const char *a, const char *b) {  // It's not like std::strcat, the latter does not allocate memory at all.
     char *res = new char[std::strlen(a) + std::strlen(b) + 1];
 
     int res_len = 0;
@@ -14,7 +14,7 @@ const char *strcat(const char *a, const char *b) {
 
 int main() {
     const char *x = "xyz";
-    const char *y = strcat("xy", "z") + 1;
+    const char *y = strcat_alloc("xy", "z") + 1;
     // ......
     delete[] (y - 1);
 }
