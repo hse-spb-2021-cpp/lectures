@@ -1,7 +1,7 @@
 #include <iostream>
 
 #define DECLARE_OPTION(T) \
-struct OptionalInt { \
+struct Optional ## T { \
 private: \
     T value; \
     bool exists; \

@@ -21,6 +21,6 @@ int main() {
     Print p;
     std::cout << "printed=" << p.printed << "\n";
     apply(p);
-    //apply(std::ref(p));
+    // apply(std::ref(p));
     std::cout << "printed=" << p.printed << "\n";
 }

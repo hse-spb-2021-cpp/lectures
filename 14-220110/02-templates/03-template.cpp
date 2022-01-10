@@ -6,6 +6,7 @@
 template<typename/* class */ C>  // C++20: concepts
 struct templ_foo {
     typename C::iterator value;  // checked on class template instantiation
+    // std::vector<int>::iterator
 
     // methods are checked on method instantiation only
     static void static_method() {
@@ -28,7 +29,7 @@ int main() {
         x.value = v.begin();
         x.foo(v);
 
-        templ_foo<std::vector<int>>::static_method();
+        // templ_foo<std::vector<int>>::static_method();
     }
 
     {

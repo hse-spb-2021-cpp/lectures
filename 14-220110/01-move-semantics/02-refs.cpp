@@ -33,8 +33,10 @@ int main() {
     int &&y2b = /* xvalue */ std::move(/* prvalue */ bar());  // no lifetime extension, accessing y2b is UB.
         // One should never move(prvalue).
     int &&y3 = /* xvalue */ std::move(x);
+    // int &&y4 = /* lvalue, CE */ x;
 
     // const lvalue references, can bind anywhere for historical reasons.
+    // "Rvalue lifetime disaster": https://www.youtube.com/watch?v=zzkpTbJiFPM
     const int &z1 = /* lvalue */ x;
     const int &z2 = /* prvalue */ 10;  // lifetime extension
     const int &z3 = /* xvalue */ std::move(x);  // move(x) == static_cast<int&&>(x)

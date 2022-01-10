@@ -78,7 +78,7 @@ int main() {
 
     // xvalue: will expire soon, but has name
     std::move(vec);
-    std::move(vec)[10];
+    std::move(vec)[9];
     std::move(s).x;
     static_cast<std::vector<int>&&>(vec);  // std::move is almost exactly that.
     get_rvalue_ref();

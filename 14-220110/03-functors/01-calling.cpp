@@ -22,7 +22,9 @@ void no_op(int) {}
 // void no_op(double) {}
 
 int main() {
-    apply(no_op);
-    apply(Print{});
-    apply(PrintTwice{});
+    apply/*<void(*)int>*/(no_op);
+    apply/*<Print>*/(Print{});
+    apply/*<Print>*/(Print{});
+    apply/*<PrintTwice>*/(PrintTwice{});
+    // apply(12);
 }
