@@ -20,6 +20,7 @@ void check_file(const std::string &filename) {
             break;
         }
     }
+    fclose(f);
 }
 
 int main() {
