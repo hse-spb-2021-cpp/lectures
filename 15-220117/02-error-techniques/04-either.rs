@@ -2,7 +2,7 @@
 use std::fs::File;
 
 fn main() {
-    let mut f = match File::open("hello.txt") {
+    let mut f = match File::open("hello.txt") {  // We have to check.
         Ok(file) => file,
         Err(error) => {
             print!("Problem opening the file: {:?}", error);

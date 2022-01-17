@@ -5,9 +5,11 @@
 void check_file(const std::string &filename) {
     std::ifstream f(filename);
     std::cout << "Reading from " << filename << "\n";
+    // Easy to forget to check.
     std::cout << "    is_open: " << f.is_open() << "\n";
     for (;;) {
         // https://en.cppreference.com/w/cpp/io/ios_base/iostate
+        // State, not result of operation
         std::cout << "    status: " << f.rdstate() << "; "
                   << std::ios_base::badbit << " "  // irrecoverable error
                   << std::ios_base::failbit << " "  // format/extract error

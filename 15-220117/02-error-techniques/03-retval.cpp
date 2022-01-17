@@ -9,7 +9,7 @@
 
 int main() {
     sqlite3 *db;
-    if (int err = sqlite3_open("does-not-exist/some-db.sqlite3", &db); err != SQLITE_OK) {
+    if (int err = sqlite3_open("does-not-exist/some-db.sqlite3", &db); err != SQLITE_OK) {  // Still easy to forget to check, but syntax is ugly.
         std::cout << "err = " << err << " " << sqlite3_errstr(err) << "\n";
         if (err == SQLITE_CANTOPEN) {
             std::cout << "Unable to open DB file\n";
