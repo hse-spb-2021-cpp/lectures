@@ -8,7 +8,7 @@ struct my_exception : std::exception {
     }
 };
 
-struct my_runtime_error : std::runtime_error {
+struct my_runtime_error : std::runtime_error {  // Choice between runtime_error and logic_error is not strict.
     my_runtime_error() : std::runtime_error("yay! " + std::to_string(123)) {}
 };
 
