@@ -1,8 +1,10 @@
 #include <cassert>
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
 void do_something() {
+    // throw std::bad_alloc();  // Uncomment when running under Valgrind/ASan, it does not like not having enough memory and will close instead of bad_alloc.
     std::vector<int> vec(100'000'000'000);
     vec[vec.size() - 1] = 123;
 }
