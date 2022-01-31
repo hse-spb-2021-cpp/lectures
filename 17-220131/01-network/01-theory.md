@@ -9,9 +9,9 @@ More details on networks: https://habr.com/ru/post/491540/
   * Not demonstrated: `nslookup` tool
   * Translation is not unique
 * Similar IP addresses for physically connected devices form a network
-  * E.g. my Wi-Fi router is `192.168.1.1`, my computer is `192.168.0.64`, they see each other
+  * E.g. my Wi-Fi router is `192.168.0.1`, my computer is `192.168.0.64`, they see each other
   * My computer also has a separate IP address and a separate network for VirtualBox machines
-* IP can send small packages, one-way only.
+* IP can send small packages (~2-64 KiB), one-way only.
 * If you would like to go to an IP far away, you may need to hop through multiple devices (routers)
   * Demonstrated: `tracert -w 100 mirror.yandex.ru` (`traceroute` on Linux/macOS)
   * Note how there are multiple "local" IP addresses: see Network Address Translation (NAT)
@@ -19,6 +19,8 @@ More details on networks: https://habr.com/ru/post/491540/
   * Global IPs are typically reachable from anywhere with "Internet Access"
 
 # TCP
+New term: _connection_.
+
 ```
   client (initiates)           server (accepts)
 ┌───────────────────┐  bytes  ┌────────────────┐
@@ -28,6 +30,9 @@ More details on networks: https://habr.com/ru/post/491540/
 ```
 
 * TCP port is an integer between 1 and 65535
+* TCP socket is a `(ip, port)` pair
+* Bytes _reliably_ flow in both directions
+  (no duplicates, no reordering, no misses).
 * `(source ip, source port, destination ip, destination port)` is a unique connection identifier
 
 ```

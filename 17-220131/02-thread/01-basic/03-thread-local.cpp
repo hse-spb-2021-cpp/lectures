@@ -11,7 +11,7 @@ struct Foo {
     }
 };
 
-thread_local Foo foo(10);
+thread_local Foo foo(10);  // new kind of storage duration.
 
 int main() {
     std::cout << "T1 &foo=" << &foo << "\n";  // Компилятор может проинициализировать лениво, но может и в момент начала потока.
