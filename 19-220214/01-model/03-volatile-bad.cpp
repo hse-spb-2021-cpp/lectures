@@ -2,7 +2,7 @@
 #include <iostream>
 #include <thread>
 
-#pragma GCC optimize("-O0")
+#pragma GCC optimize("-O2")
 
 int main() {
     volatile int data = 0;
@@ -10,7 +10,7 @@ int main() {
 
     std::thread t([&]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        // Hmm.
+        // Hmm: compiler cannot reorder two writes below. But CPU still can!
         data = 123;
         finished = true;
     });

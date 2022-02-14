@@ -1,6 +1,6 @@
 Mutex:
     
-    T1       std::mutex m1;       T2        std::mutex m2;        T2
+    T1       std::mutex m1;       T2        std::mutex m2;        T3
     │               │             │                 │             │
 ┌─m1.lock()─────────┼──────┐      │                 │             │
 │   │               │      │┌──m1.lock()──┐         │             │
@@ -18,4 +18,3 @@ Mutex:
 
 191205.pdf: condvar (21-23; 26-29)
 Start with 18-220207/04-condvar/02-condvar.cpp 
-

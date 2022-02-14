@@ -12,7 +12,7 @@ int main() {
     // 1. T1 == T2 (но T1 может быть более const)
     // 2. T1 --- базовый класс T2
     // .....
-    // 10. T1 == char
+    // 10. T1 == char, unsigned char, std::byte
 
     // Выше нарушаем: T1 == int, T2 == float.
 
