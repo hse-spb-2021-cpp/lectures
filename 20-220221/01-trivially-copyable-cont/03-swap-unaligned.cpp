@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct S {
     char c;
+    // no padding [bytes], alignment [of fields] is invalid
     int a = 10, b = 20;
 };
 #pragma pack(pop)
