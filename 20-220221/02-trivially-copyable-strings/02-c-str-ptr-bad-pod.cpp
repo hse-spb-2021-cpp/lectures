@@ -3,8 +3,8 @@
 #include <fstream>
 
 struct Person {
-    char *first_name;
-    char *last_name;
+    const char *first_name;
+    const char *last_name;
 };
 
 int main() {

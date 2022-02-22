@@ -16,7 +16,6 @@ public:
     }
 
     list_node *get_next() {
-        // https://twitter.com/Nekrolm/status/1487060735305957379
         // TOC-TOU is imminent!
         std::unique_lock l(m);
         return next;
@@ -25,4 +24,10 @@ public:
 
 void append_after(list_node *x, int data) {
     x->set_next(new list_node(data, x->get_next()));
+    // See also: ABA problem.
 }
+/*
+X -> B -> C
+X -> T1 -> B -> C
+X -> T2 -> B -> C
+*/

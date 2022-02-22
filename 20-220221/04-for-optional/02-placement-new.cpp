@@ -22,7 +22,7 @@ int main() {
     Foo *f = new (data) Foo();  // Best practice.
     // Also possible, but requires that `data` is either `unsigned char` or `std::byte`, not `char`, IIUC.
     // new (data) Foo();
-    // f = reinterpret_cast<Foo*>(data);
+    // Foo *f = reinterpret_cast<Foo*>(data);
 
     std::cout << f->v.size() << std::endl;
     std::cout << "bytes:";
@@ -31,5 +31,6 @@ int main() {
     }
     std::cout << std::endl;
 
-    f->~Foo();  // Explicit destructor call/pseudodestructor.5
+    f->~Foo();  // Explicit destructor call/pseudodestructor. No memory deallocation, so it can be any memory.
+    // delete f;  // Destructor + memory deallocation.
 }

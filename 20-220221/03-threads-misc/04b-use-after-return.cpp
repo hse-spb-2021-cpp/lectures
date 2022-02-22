@@ -25,3 +25,9 @@ public:
         return v[i];
     }
 };
+
+void print_head(atomic_vector<int> v) {
+    std::cout << v[0] << "\n";
+}
+
+// How to improve: return by value!
