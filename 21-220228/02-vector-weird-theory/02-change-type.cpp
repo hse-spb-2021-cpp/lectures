@@ -37,4 +37,6 @@ int main() {
     new (buf) Derived();
     obj.print();  // Legal C++? I dunno.
     reinterpret_cast<Base&>(buf).~Base();
+
+    // Another thread, did not read, but sounds fun: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=86908
 }
