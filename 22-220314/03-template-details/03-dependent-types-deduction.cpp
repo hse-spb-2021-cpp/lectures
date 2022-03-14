@@ -2,7 +2,7 @@
 #include <vector>
 
 template<typename C>
-bool is_begin(typename C::iterator it, const C &c) {  // If C is known, C::iterator is also known.
+bool is_begin(typename C::iterator it, const C &c) {  // If C is known, C::iterator is also known, even though it's on the right.
     return c.begin() == it;
 }
 
