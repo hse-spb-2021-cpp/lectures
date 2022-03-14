@@ -16,6 +16,7 @@ templ_foo<std::vector<int>> y;
 templ_foo<> z;
 
 // Types/default values of following parameters may depend on prior.
+// Unlike functions: `void foo(int a, int b = a)` is invalid.
 template<typename C, C value, typename D = std::pair<C, C>>
 struct templ_bar {
 };

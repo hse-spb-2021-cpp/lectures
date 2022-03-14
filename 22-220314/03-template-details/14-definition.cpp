@@ -5,7 +5,7 @@ struct Foo {
     static int static_field;
 
     template<typename U>
-    void bar();  // TODO: how to define outside of class?
+    void bar();
 };
 
 template<typename T>
@@ -18,6 +18,11 @@ Foo<T> Foo<T>::create_foo() {
 
 template<typename T>
 int Foo<T>::static_field = 10;
+
+template<typename T>  // Class template arguments
+template<typename U>  // Function template arguments
+void Foo<T>::bar() {
+}
 
 int main() {
     Foo<int> x;
