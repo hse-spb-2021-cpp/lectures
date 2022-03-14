@@ -4,3 +4,5 @@ Recall:
 * "Instantiation"
 * Class instantiation
 * Method/function instantiation
+
+Compare templates (static polymorphism) with inheritance (dynamic polymorphism).
