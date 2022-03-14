@@ -24,7 +24,9 @@ templ_bar<int, 10> xx;
 templ_bar<unsigned, 4'000'000'000> yy;
 
 // You may want a template of a specific 'kind' as a paremeter. Works with argument deduction as well.
-template<typename T, template<typename> typename Container = std::vector>  // Even though std::vector<T, Alloc>! TODO: gcc only?
+// Since C++17: works even though std::vector<T, Alloc>, see https://wg21.link/p0522r0
+//              Clang disables it by default because it is 'incomplete': https://github.com/llvm/llvm-project/issues/42305
+template<typename T, template<typename> typename Container = std::vector>
 struct heap {
     Container<std::pair<T, int>> data;  // (value, id)
 };
