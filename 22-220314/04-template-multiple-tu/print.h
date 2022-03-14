@@ -9,6 +9,7 @@ template<typename T> void print(const T &value);  // Optional.
 //
 // General implementation of print<> should always be in the header,
 // so it can be implicitly instantiated on demand. Otherwise: undefined reference.
+// See https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
 template<typename T> void print(const T &value) {
     std::cout << value << "\n";
 }
