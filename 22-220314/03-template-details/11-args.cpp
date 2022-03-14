@@ -24,7 +24,7 @@ templ_bar<int, 10> xx;
 templ_bar<unsigned, 4'000'000'000> yy;
 
 // You may want a template of a specific 'kind' as a paremeter. Works with argument deduction as well.
-template<typename T, template<typename> typename Container = std::vector>  // Even though std::vector<T, Alloc>!
+template<typename T, template<typename> typename Container = std::vector>  // Even though std::vector<T, Alloc>! TODO: gcc only?
 struct heap {
     Container<std::pair<T, int>> data;  // (value, id)
 };
@@ -34,7 +34,7 @@ template<typename T, typename Container = std::vector<T>>
 struct priority_queue {
     Container c;
     // Cannot create Container<std::pair<T, int>>
-}
+};
 
 int main() {
     heap<std::string> h1;
