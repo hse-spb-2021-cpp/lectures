@@ -32,8 +32,11 @@ int main() {
     [[maybe_unused]] Foo<int, 11> y;
     [[maybe_unused]] Foo<char, 11> z;
 
+    // Cannot specify explicit template arguments for constructors.
     [[maybe_unused]] Foo<int, 10> x1 = x;
+    [[maybe_unused]] Foo<int, 10> x1b(x);
     [[maybe_unused]] Foo<int, 10> x2 = y;
+    [[maybe_unused]] Foo<int, 10> x2b(y);
     // [[maybe_unused]] Foo<int, 10> x3 = z;
 
     x.foo(z);  // argument deduction works

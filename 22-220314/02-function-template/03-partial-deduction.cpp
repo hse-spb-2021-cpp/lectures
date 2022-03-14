@@ -20,7 +20,8 @@ int main() {
     // All will call print_two<int, double>:
     print_two<int, double>(10, 23.5);
     print_two<int>(10, 23.5);
+    print_two<double>(10, 23.5);  // TA=double, TB=double. const double &a = 10;
     print_two<>(10, 23.5);  // Rarely used in favor of the next line:
     print_two(10, 23.5);
-    // No way to specify non-preix.
+    // No way to specify non-prefix.
 }

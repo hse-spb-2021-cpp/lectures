@@ -2,6 +2,7 @@
 
 template<typename T>
 void print(/* const */ T &a) {
+    a++;  // Assume `a` is non-const (which actually may be false).
     std::cout << a << std::endl;
 }
 
@@ -20,8 +21,9 @@ int main() {
 
     const int x = 30;
     // auto &a = x;
-    print(x);  // Arg=const int. T=const int. const int &x;
+    // print(x);  // Arg=const int. T=const int. const int &x; Compilation error inside.
 
     // auto a = x;
     print_off(x);  // Arg=const int. T=int. int x;
 }
+// More details: approx 15m of CppCon 2014: Scott Meyers: Type Deduction and Why You Care: https://www.youtube.com/watch?v=wQxj20X-tIU

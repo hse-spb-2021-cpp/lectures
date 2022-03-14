@@ -28,6 +28,13 @@ struct heap {
     Container<std::pair<T, int>> data;  // (value, id)
 };
 
+// Compare this with easier to write and read:
+template<typename T, typename Container = std::vector<T>>
+struct priority_queue {
+    Container c;
+    // Cannot create Container<std::pair<T, int>>
+}
+
 int main() {
     heap<std::string> h1;
     h1.data.emplace_back("hello", 20);

@@ -1,10 +1,11 @@
 template<typename T>
 struct Foo {
     void foo(const Foo &other);
-
     Foo create_foo();
-
     static int static_field;
+
+    template<typename U>
+    void bar();  // TODO: how to define outside of class?
 };
 
 template<typename T>

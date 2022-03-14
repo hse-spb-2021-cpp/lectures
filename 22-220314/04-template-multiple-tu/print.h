@@ -12,6 +12,7 @@ template<typename T> void print(const T &value);  // Optional.
 template<typename T> void print(const T &value) {
     std::cout << value << "\n";
 }
+
 // Out-of-scope: explicit instantiations for faster compilation: https://stackoverflow.com/a/59614755/767632
 //               E.g. `std::string=std::basic_string<char>`
 

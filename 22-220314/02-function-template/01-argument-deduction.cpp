@@ -1,10 +1,11 @@
 #include <vector>
+#include <utility>
 
 // function template
 template<typename T>
 void swap(T &a, T &b) {
-    T tmp = a;
-    a = b;
+    T tmp = std::move(a);
+    a = std::move(b);
     b = tmp;
 }
 
@@ -18,8 +19,9 @@ int main() {
     swap<int>(x, y);
 
     // template argument deduction
-    swap(x, y);  // T = int
+    swap(x, y);  // Arg1=int, Arg2=int => T = int
     // swap(x, z);  // compilation error: deduced conflicting types for T
+    swap<int>(x, z);  // compilation error: cannot bind int& to short
 
     foo(std::vector<double>{}, std::vector<float>{});  // T=double, U=float
 }
