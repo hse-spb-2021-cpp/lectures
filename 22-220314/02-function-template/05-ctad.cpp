@@ -34,4 +34,10 @@ int main() {
     // Work around + life before C++17: using argument deduction for functions.
     [[maybe_unused]] auto p5 = make_pair(10, 20);
     [[maybe_unused]] auto p6 = make_pair<double>(10, 20);
+
+    struct ConvertibleToPair {
+        operator pair<int, double>() { return {10, 20.5}; }
+    };
+    // [[maybe_unused]] pair p7 = ConvertibleToPair{};  // CTAD does not work through conversions, guides are pre-generated.
+    [[maybe_unused]] pair<int, double> p8 = ConvertibleToPair{};
 }

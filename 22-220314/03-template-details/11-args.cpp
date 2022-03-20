@@ -14,6 +14,7 @@ struct templ_foo {
 templ_foo<std::vector<int>, char, bool> x;
 templ_foo<std::vector<int>> y;
 templ_foo<> z;
+templ_foo zz;  // Available because of CTAD, otherwise 'templ_foo' is a template, not a class
 
 // Types/default values of following parameters may depend on prior.
 // Unlike functions: `void foo(int a, int b = a)` is invalid.

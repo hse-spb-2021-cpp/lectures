@@ -1,12 +1,18 @@
 #include <vector>
 
 template<typename T>
+struct BaseConstructorTag {};
+
+template<typename T>
 struct Base {
+    Base() {}
+    Base(BaseConstructorTag<T>) {}
 };
 
 struct Derived1 : Base<int> {};
 struct Derived2 : Base<double> {};
-struct Derived3 : Base<int>, Base<double> {};
+struct Derived3 : Base<int>, private Base<double> {
+};
 
 struct ConvertibleToBase {
     operator Base<int>() {
@@ -25,9 +31,13 @@ int main() {
     foo(Base<int>());
     foo(Derived1());
     foo(Derived2());
-    // foo(Derived3());  // compilation error: ambiguous base
+    //foo(Derived3());  // compilation error: ambiguous base, even though Base<double> is private
+
+    BaseConstructorTag<int> t;
+    [[maybe_unused]] const Base<int> &tref = t;
+    // foo(t);  // compilation error: cannot deduce T because compiler won't go through all possible constructors
 
     ConvertibleToBase x;
-    [[maybe_unused]] const Base<int> &ref = x;
-    // foo(x);  // compilation error: cannot deduce T because it won't go through all possible conversions
+    [[maybe_unused]] const Base<int> &xref = x;
+    // foo(x);  // compilation error: cannot deduce T because compiler won't go through all possible conversions
 }

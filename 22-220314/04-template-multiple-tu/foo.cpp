@@ -12,4 +12,5 @@ void foo() {
     print(2);
     print(2.3);
     print(my_secret_type());
+    my_template<int>{}.foo();
 }

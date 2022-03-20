@@ -4,7 +4,7 @@ struct Foo {
     Foo create_foo();
     static int static_field;
 
-    template<typename U>
+    template<typename U, typename V>
     void bar();
 };
 
@@ -20,7 +20,7 @@ template<typename T>
 int Foo<T>::static_field = 10;
 
 template<typename T>  // Class template arguments
-template<typename U>  // Function template arguments
+template<typename U, typename V>  // Function template arguments
 void Foo<T>::bar() {
 }
 
