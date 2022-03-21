@@ -24,7 +24,7 @@ void simple_func() {
 
 // Template non_simple_func<T>(), does not correspond to a non-template declaration inside MyTemplate.
 template<typename T>
-void non_simple_func(MyTemplate<T> &val) {
+void non_simple_func([[maybe_unused]] MyTemplate<T> &val) {
     // val.x = 10;
 }
 
@@ -44,6 +44,6 @@ int main() {
 
     MyTemplate<int> val1b;
     // non_templ_friend(val1, val1b);  // val1b is not <void>
-    non_templ_friend(val1, weird);
-    non_templ_friend(val2, weird);
+    non_templ_friend(val1, weird);  // T=int
+    non_templ_friend(val2, weird);  // T=char
 }

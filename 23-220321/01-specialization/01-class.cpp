@@ -5,7 +5,7 @@
 #include <vector>
 
 template<typename T>
-struct my_vector {
+struct my_vector {  // primary template
 private:
     std::vector<T> data;
 public:
@@ -20,18 +20,22 @@ template<>
 struct my_vector<bool>;  // Optional: specialization declaration, disables implicit instantiation.
 
 template<>
-struct my_vector<bool> {
+struct my_vector<bool> {  // specialization, usual class, can be in .cpp
 private:
-    std::vector<std::uint8_t> data;
+    // There is no `T`, no relation to the primary template whatsoever
+    std::vector<std::uint8_t> bits;
 public:
-    my_vector(int n) : data((n + 7) / 8) {}
-    bool get(int i) { return (data[i / 8] >> (i % 8)) & 1; }
+    my_vector(int n) : bits((n + 7) / 8) {}
+    bool get(int i) { return (bits[i / 8] >> (i % 8)) & 1; }
     void set(int i, bool value) {
         if (value) {
-            data[i / 8] |= 1 << (i % 8);
+            bits[i / 8] |= 1 << (i % 8);
         } else {
-            data[i / 8] &= ~(1 << (i % 8));
+            bits[i / 8] &= ~(1 << (i % 8));
         }
+    }
+    void foobarbaz() {  // Even unused methods are compiled!
+        // foobarbazbazbaz();
     }
 };
 

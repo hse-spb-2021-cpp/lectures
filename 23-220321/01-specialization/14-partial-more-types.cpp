@@ -8,14 +8,14 @@ struct store_first {
     store_first(const T &t) : data(std::move(t)) {}
 };
 
-template<typename T>
-struct store_first<std::vector<T>> {
-    T data;
-    store_first(const std::vector<T> &v) : data(v.at(0)) {}
+template<typename TEl>
+struct store_first</*T=*/std::vector<TEl>> {
+    TEl data;
+    store_first(const std::vector<TEl> &v) : data(v.at(0)) {}
 };
 
 template<typename T, typename U>
-struct store_first<std::pair<T, U>> {
+struct store_first</*T=*/std::pair<T, U>> {
     T data;
     store_first(const std::pair<T, U> &p) : data(p.first) {}
 };

@@ -13,17 +13,21 @@ private:
     friend struct Bar<std::vector<T>>;
 };
 
-template<typename T>
+template<typename T /* VecT may be a better name to avoid confusion */>
 struct Bar {
     void bar() {
+        // Foo<int>: friend struct Bar<vector<int>>.
         Foo<typename T::value_type> f;
         f.x = 10;
 
         [[maybe_unused]] Foo<void> g;
         // g.x = 10;
+
+        [[maybe_unused]] Foo<T> h;
+        // h.x = 10;
     }
 };
 
 int main() {
-    Bar<std::vector<int>>().bar();
+    Bar</*T=*/std::vector<int>>().bar();
 }

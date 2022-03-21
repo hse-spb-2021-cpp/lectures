@@ -31,13 +31,16 @@ int main() {
     foo(Base<int>());
     foo(Derived1());
     foo(Derived2());
+    foo<int>(Derived3());
     //foo(Derived3());  // compilation error: ambiguous base, even though Base<double> is private
 
     BaseConstructorTag<int> t;
     [[maybe_unused]] const Base<int> &tref = t;
+    foo<int>(t);
     // foo(t);  // compilation error: cannot deduce T because compiler won't go through all possible constructors
 
     ConvertibleToBase x;
     [[maybe_unused]] const Base<int> &xref = x;
+    foo<int>(x);
     // foo(x);  // compilation error: cannot deduce T because compiler won't go through all possible conversions
 }

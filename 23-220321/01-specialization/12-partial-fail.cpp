@@ -5,9 +5,9 @@ template<int I>
 struct foo {
 };
 
-template<typename I>
+template<int I>
 struct foo<2 * I> {  // Compilation error: cannot solve "real" equations
-    static inline const bool value = I
+    static inline const bool value = I;
 };
 
 int main() {
