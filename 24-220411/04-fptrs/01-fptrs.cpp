@@ -22,6 +22,7 @@ void print_twice(int x) {
 
 int main() {
    apply(print);
+   apply([](int x) { std::cout << "lambda: " << x << "\n"; });  // lambdas with no captures can be converted
    apply(print_twice);
    apply2(print);
    apply2(print_twice);
