@@ -20,7 +20,7 @@ void foo_cpp_wtf(int (&arr)[10]) {  // C++-only, ok
 }
 
 template<std::size_t N>
-void foo_cpp_templ(int (&arr)[N]) {
+void foo_cpp_templ(int (&arr)[N]) {  // Just like std::size
     std::cout << "N = " << N << ", last = " << arr[N - 1] << "\n";
 }
 

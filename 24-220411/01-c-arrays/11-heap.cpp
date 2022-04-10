@@ -15,5 +15,5 @@ int main() {
     }
     delete[] strs;  // delete[], not just delete!
 
-    // Inferior to std::vector, never use.
+    // Inferior to std::vector, please never use.
 }

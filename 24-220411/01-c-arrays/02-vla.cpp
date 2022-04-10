@@ -10,7 +10,7 @@ int main() {
     std::cin >> n;
     int vla[n];  // Allocated "on stack"
     std::cout << sizeof(vla) / sizeof(vla[0]) << "\n";
-    // std::cout << std::size(vla) << "\n";  // Does not compile because the extension is not full
+    // std::cout << std::size(vla) << "\n";  // Does not compile because there is no exact "type" for VLA to instantiate std::size with.
     for (int i = 0; i < n; i++) {
         vla[i] = i * i;
     }
