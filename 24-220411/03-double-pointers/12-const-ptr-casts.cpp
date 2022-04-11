@@ -20,4 +20,5 @@ int main() {
     }
 
     [[maybe_unused]] const int *const *pcpcx = &px;
+    // int** --> const int * const *: ok
 }

@@ -11,6 +11,7 @@ int main() {
     void *p3 = &v;
 
     std::cout << p1 << "\n";
+    // *p1;  // compilation error
     std::cout << *static_cast<int*>(p1) << "\n";
     std::cout << *static_cast<short*>(p2) << "\n";
     std::cout << static_cast<std::vector<int>*>(p3)->size() << "\n";

@@ -1,3 +1,4 @@
+#include <array>
 #include <cassert>
 #include <iterator>
 #include <iostream>
@@ -5,8 +6,8 @@
 const int MAX_N = 10;
 struct Points {
     int n;
-    int xs[MAX_N]{};  // Same as if 10 fields are defined.
-    int ys[MAX_N]{};
+    std::array<int, MAX_N> xs{};  // Same as if 10 fields are defined.
+    std::array<int, MAX_N> ys{};
 };
 
 int main() {

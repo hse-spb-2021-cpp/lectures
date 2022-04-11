@@ -6,9 +6,10 @@ const int N = 5;
 
 int main() {
     // "C-arrays", "plain arrays"
-    int arr[2 * N];  // 10 uninitialized ints one after another
-                     // Automatic storage duration
-                     // Size should be a compile-time expression
+    [[maybe_unused]] int var1, arr[2 * N], var2;
+    // 10 uninitialized ints one after another.
+    // Automatic storage duration
+    // Size should be a compile-time expression, strictly greater than 0
     assert(std::size(arr) == 10);  // C++-style
     assert(sizeof(arr) == 10 * sizeof(int));  // C style
     assert(sizeof(arr) / sizeof(arr[0]) == 10);  // C style

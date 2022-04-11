@@ -7,7 +7,7 @@ void for_each(void *begin, void *end, std::size_t elem_size, void (*f)(const voi
     }
 }
 
-void print_int(int *x) {
+void print_int(const int *x) {
     std::cout << *x << "\n";
 }
 

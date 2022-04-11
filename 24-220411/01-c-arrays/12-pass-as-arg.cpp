@@ -1,3 +1,4 @@
+#include <array>
 #include <iostream>
 #include <iterator>
 #include <cstddef>
@@ -24,10 +25,18 @@ void foo_cpp_templ(int (&arr)[N]) {  // Just like std::size
     std::cout << "N = " << N << ", last = " << arr[N - 1] << "\n";
 }
 
+void foo_cpp_arr(std::array<int, 10> arr) {  // C++-only, copies
+    std::cout << "arr[0/10] = " << arr[0] << "\n";
+}
+
 int main() {
     int arr[10]{1, 2, 3};
     foo(arr);
     foo_good(arr, sizeof arr / sizeof arr[0]);  // C style.
     foo_cpp_wtf(arr);
     foo_cpp_templ(arr);
+    {
+        std::array<int, 10> arr2{1, 2, 3};
+        foo_cpp_arr(arr2);
+    }
 }

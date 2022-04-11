@@ -58,4 +58,9 @@ int main() {
         // [[maybe_unused]] int *const cpx = cpcx;
         [[maybe_unused]] const int *pcx = cpcx;
     }
+
+    {
+        int *px = &x[0];
+        const int *const *const cpcpcx = &px;
+    }
 }

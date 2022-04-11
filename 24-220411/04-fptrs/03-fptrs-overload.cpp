@@ -24,13 +24,12 @@ int main() {
 
    apply(print, 10);
 
-//   apply10(print);
-    apply10<int>(print);
+   // apply10(print);
+   apply10<int>(print);
 
    [[maybe_unused]] void (*ptr1)(int) = print;
    [[maybe_unused]] void (*ptr2)(double) = print;
 
    // auto ptr4 = print;
    [[maybe_unused]] auto ptr5 = static_cast< void(*)(int) >(print);
-   [[maybe_unused]] void (*ptr6)(int) = print;
 }

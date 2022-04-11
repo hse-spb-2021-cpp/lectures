@@ -1,14 +1,14 @@
 #include <cassert>
 #include <iostream>
 
-void read_line(char ** const s) {
+void read_line(char **s) {
     *s = new char[10];  // Assume noexcept.
     // *s = new char[10]{};
     std::cin.read(*s, 9);  // Does not add zero terminator
-    (*s)[std::cin.gcount()] = 0;  // s[....] alternatively
+    (*s)[std::cin.gcount()] = 0;
 }
 
-void read_line_buffered(char ** const s) {
+void read_line_buffered(char **s) {
     static char buffer[10];
     *s = buffer;
     std::cin.read(*s, 9);
