@@ -20,7 +20,7 @@ label:
     foo:;
     }
     {
-    bar:;  // Not in C++?
+    bar:;  // TODO: not in C++?
         int x;
     }
 }

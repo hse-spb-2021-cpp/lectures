@@ -3,9 +3,9 @@
 #include <string.h>
 
 int main(void) {
-    char *s = malloc(5), *new_s;
+    char *s = malloc(5), *new_s = malloc(50);
     strcpy(s, "xyz");
-    printf("%p %s\n", s, s);
+    printf("%p %s; new_s=%p\n", s, s, new_s);
 
     s = realloc(s, 4);
     printf("%p %s\n", s, s);

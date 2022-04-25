@@ -1,7 +1,7 @@
 C APIs may seem complicated. It is because:
 
 1. They use C and fully manual resource management.
-   E.g. no methods grouped for an object, functions are intermingled in docs, lots of void*.
+   E.g. no methods grouped for an object, functions are intermingled in docs, lots of void*, lack of `const`.
    E.g. a buffer is user-allocated and is two arguments: the pointer and the length.
 2. They rarely interoperate with each other.
    E.g. there may be a "dynamic string/array" library and a separate

@@ -1,7 +1,7 @@
 #include <iostream>
 
 void strcpy(char *dst, const char *src) {
-    while ((*dst++ = *src++));
+    while ((*dst++ = *src++));  // Double parens are to suppress warning.
 }
 
 // Look up: builtin vectorization functions

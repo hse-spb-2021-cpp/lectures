@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+// Question: why we needed it for DLL?
 extern "C" int foo();  // Disable name mangling, and link like C.
 
 int foo(int x) {  // OK

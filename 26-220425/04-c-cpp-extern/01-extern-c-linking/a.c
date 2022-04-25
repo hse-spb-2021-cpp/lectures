@@ -2,7 +2,7 @@
 
 int my_main(void);
 
-int foo() {
+int foo(void) {
     int arr[] = { [3] = 123; };  // Use C-specific syntax to ensure we're writing C.
     return arr[3];
 }

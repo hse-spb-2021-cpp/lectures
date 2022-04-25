@@ -16,7 +16,7 @@ void my_memcpy2(void *restrict dst, const void *restrict src, size_t n) {
 int main(void) {
     {
         int arr[] = {1, 2, 3, 4, 5};
-        my_memcpy1(arr, arr + 2, sizeof(int) * 3);
+        my_memcpy1(arr, arr + 2, sizeof(int) * 3);  // Bad call: restrict is violated
         for (int i = 0; i < 5; i++) {
             printf("%d%c", arr[i], "\n "[i + 1 < 5]);
         }
