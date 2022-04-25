@@ -1,6 +1,6 @@
 // Everything here is valid C++
 
-struct point1 {
+struct point1 {  // no 'class'
     int x;  // = 0  // no member initializers
     int y;
 
@@ -19,7 +19,6 @@ ppoint1 pp1b = &p1b;
 typedef struct point2 {
     int x;
     int y;
-
 } point2, *ppoint2;
 point2 p2;
 ppoint2 pp2 = &p2;
@@ -30,4 +29,5 @@ int point2_dist2(const struct point2 *p) {
 }
 
 int main() {
+    // point2_dist2(&p2);
 }

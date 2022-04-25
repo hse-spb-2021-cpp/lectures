@@ -1,0 +1,5 @@
+01-c-differences: regroup: C-specific stuff, C/C++ compatibility stuff (mostly for C), C/C++ incompatibilities... Or something? To avoid jumps between topics
+03-c-str: get rid of duplicated examples (esp. duplicated with the first reading of c-str)
+04-c-resource-management: Add example of sqlite-like interface (does not return pointer, instead returns an error code)
+
+Do not use json-c, as it is complicated stuff which includes `shared_ptr` semantics? Something `unique_ptr`-like with `clone` is better.

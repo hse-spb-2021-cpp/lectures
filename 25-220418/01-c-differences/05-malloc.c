@@ -4,10 +4,10 @@
 
 int main(void) {
     int *a = malloc(5 * sizeof(int));  // new int[5];
-    assert(a);  // returns nullptr on failure.
+    assert(a);  // returns NULL/0 on failure.
     // malloc returns void*, implicitly casted to int* in C
     printf("%d\n", a[0]);  // Uninitialized, UB. Typically zero on Linux.
-    a[0] = 10;
+    a[0] = 10;  // No need in placement new.
     printf("%d\n", a[0]);
     free(a);  // delete[] a
 

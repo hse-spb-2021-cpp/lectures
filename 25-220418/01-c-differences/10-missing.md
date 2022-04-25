@@ -6,10 +6,11 @@
 * `bool` --> `int` + `0`/`1` OR `<stdbool.h>`
 * `using` --> `typedef`
 * `new`/`delete` --> `malloc`/`free` bytewise
-* move/copy --> `memcpy`
+* move/copy constructor/assignment operator --> `memcpy`
 * templates --> complicated macros
 
 # Fully missing
 * functions: overloading, default parameters
+   * partially emulated: macro (`_Generic` and other magic)
 * `std::vector`
-* exceptions
+* exceptions --> return code

@@ -21,7 +21,7 @@ int main() {
         char b[] = " world";
 
         my_strcat(&a, b);
-        // my_strcat(a + 1, b);  // UB: free in the middle of a memory
+        // my_strcat(&(a + 1), b);  // UB: free in the middle of a memory
         printf("%s\n", a);
         free(a);
     }
