@@ -6,7 +6,7 @@ void print(int a, int b, int c, int d) {
 
 template<typename ...Ts>
 void print_twice(const Ts &...vs) {
-    print(vs..., vs...);
+    print(239, vs..., 17, vs...);
 }
 
 template<typename ...Ts>
@@ -20,7 +20,7 @@ void print_double(const Ts &...vs) {
 }
 
 int main() {
-    print_twice(1, 2);
+    print_twice(1);
     print_plus_10(1, 2, 3, 4);
     print_double(1, 2, 3, 4);
 }

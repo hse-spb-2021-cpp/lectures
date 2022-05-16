@@ -5,14 +5,14 @@
 template<std::size_t I, typename ...Ts>
 struct type_getter {};
 
-template<std::size_t I, typename T, typename ...Ts>
-struct type_getter<I, T, Ts...> {
-    using type = typename type_getter<I - 1, Ts...>::type;
-};
-
 template<typename T, typename ...Ts>
 struct type_getter<0, T, Ts...> {
     using type = T;
+};
+
+template<std::size_t I, typename T, typename ...Ts>
+struct type_getter<I, T, Ts...> {
+    using type = typename type_getter<I - 1, Ts...>::type;
 };
 
 int main() {

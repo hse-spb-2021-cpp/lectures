@@ -5,7 +5,8 @@
 
 template<typename ...Ts>
 auto sum1(const Ts &...vs) {
-    return (vs + ...);  // unary right fold: v0 + (v1 + (v2 + ...))
+    return (vs + ...);  // unary right fold: v0 + (v1 + (v2 + v3))
+    // return (... + vs);  // unary left fold: ((v[n-4] + v[n-3]) + v[n-2]) + v[n-1]
 }
 
 template<typename ...Ts>
@@ -15,13 +16,17 @@ auto sum2(const Ts &...vs) {
 
 template<typename ...Ts>
 auto sum_twice(const Ts &...vs) {
-    return ((vs * 2) + ... + 0);  // patterns are allowed
+    return ((2 * vs) + ... + 0);  // patterns are allowed
 }
 
 template<typename ...Ts>
 void print(const Ts &...vs) {
     // binary left fold: (std::cout << v0) << v1
     (std::cout << ... << vs) << "\n";
+    // (std::cout << vs << ...) << "\n";  // incorrect
+    // (0 + vs + ...)  // incorrect too
+    // std::cout << ... << vs << "\n";  // incorrect fold expression
+    // std::cout << ... << (vs << "\n");  // `v0 << "\n"` is not a valid expression
 }
 
 int main() {

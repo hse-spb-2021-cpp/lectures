@@ -2,12 +2,12 @@
 
 struct Foo {
     Foo(int) {}
-    int func(int) { std::cout << "1\n"; }
+    void func(int) { std::cout << "1\n"; }
 };
 
 struct Bar {
     Bar(int);
-    int func(char) { std::cout << "2\n"; }
+    void func(char) { std::cout << "2\n"; }
 };
 
 template<typename ...Ts>

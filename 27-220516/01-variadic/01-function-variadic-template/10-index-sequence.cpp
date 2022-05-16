@@ -15,6 +15,7 @@ void print_helper(const std::tuple<Ts...> &t, std::index_sequence<Is...>) {
         std::cout << v;
     };
     (f(std::get<Is>(t)), ...);
+    // f(std::get<0>(t)), (f(std::get<1>(t)), f(std::get<2>(t)));
     std::cout << "\n";
 }
 

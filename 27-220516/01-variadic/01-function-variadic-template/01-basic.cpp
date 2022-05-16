@@ -18,7 +18,7 @@ void print(const T1 &v1, const T2 &v2, const T3 &v3) {
     std::cout << v1 << " " << v2 << " " << v3;
 }
 
-// "Variadic template" is a class template which has a "template parameter pack"
+// "Variadic template" is a template which has a "template parameter pack"
 // https://en.cppreference.com/w/cpp/language/parameter_pack
 // It is NOT a "variadic function" (C-style `printf`-like): https://en.cppreference.com/w/c/variadic
 

@@ -13,7 +13,11 @@ void println(const Ts &...vs) {
         }
         std::cout << v;
     };
-    (f(vs), ...);  // C++17. Use array initialization for C++14 and before.
+    (f(vs), ...);  // C++17 lifehack.
+    // (f(12), (f("hello"), f("world")));
+
+    // int dummy[] = { f(vs)... };  // C++14 lifehack, make sure `f` returns 0.
+    // int dummy[] = { f(12), f("hello"), f("world") };
     std::cout << "\n";
 }
 

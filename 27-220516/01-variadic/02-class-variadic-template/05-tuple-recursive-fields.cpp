@@ -25,7 +25,7 @@ int main() {
     [[maybe_unused]] auto c = x.tail;  // tuple<std::string>
     [[maybe_unused]] auto d = x.tail.head;  // std::string
     [[maybe_unused]] auto e = x.tail.tail;  // tuple<>
-    // [[maybe_unused]] auto f = x.tail.tail.head;  // tuple<int, std::string>
+    // [[maybe_unused]] auto f = x.tail.tail.head;  // compilation error
 
     [[maybe_unused]] int f1 = get<0>(x);
     [[maybe_unused]] std::string f2 = get<1>(x);

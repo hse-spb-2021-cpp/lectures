@@ -26,7 +26,7 @@ int main() {
     {
         std::pair<int, string> p(10, "foo");
         std::tuple<int, string> t = p;  // Implicit conversion: pair --> tuple.
-        auto tt = std::tuple_cat(t, t);  // Concatenation (cat)/
+        auto tt = std::tuple_cat(t, t);  // Concatenation (cat)
         // You can get tuple element's type.
         std::tuple_element_t<0, decltype(tt)> x = std::get<0>(tt);
         static_assert(std::tuple_size_v<decltype(tt)> == 4);

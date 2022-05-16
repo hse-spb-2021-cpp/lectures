@@ -1,13 +1,14 @@
-int func() { return 0; }
+#include <cstddef>
 
 template<int ...Ns>  // Template parameter pack, but of values instead of types.
 struct Foo {
     static constexpr inline std::size_t M = sizeof...(Ns);
 };
-Bar<> b1;            // M = 0
-Bar<10, 20, 30> b2;  // M = 3
+Foo<> b1;            // M = 0
+Foo<10, 20, 30> b2;  // M = 3
 
-void foo(int a, int b, int c) {}
+int func() { return 0; }
+void foo(int a, int (*b)()) {}
 
 template<typename ...Ts>
 struct Combo {
@@ -21,6 +22,7 @@ struct Combo {
     };
 };
 Combo<int, int(*)()>::Inside<10, func> x;
+// Combo<int, int(*)()>::Inside<func, func> y;  // type mismatch
 
 // Since C++17: each value can have an independent type.
 template<auto Value> struct WithValue {};
