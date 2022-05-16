@@ -13,6 +13,14 @@ void bar(int &x) {
 
 struct Storer {
     std::string stored;
+    /*
+    // Inefficient: extra construction, extra destruction
+    void operator()(std::string x) {
+        std::cout << "  store copy\n";
+        stored = std::move(x);
+    }
+    */
+    // Efficient: only one assignment (copy or move)
     void operator()(const std::string &x) {
         std::cout << "  store copy\n";
         stored = x;
@@ -34,15 +42,16 @@ int main() {
     log(foo, 10);
 
     int x = 20;
+    // log(bar, x);  // compilation error :(
     log(bar, std::ref(x));  // Requires std::ref at call place
     std::cout << "x = " << x << "\n";
 
     std::string s = "hello world from long string";
     const std::string cs = "hello world from long const string";
     Storer baz;
-    log(baz, s);  // 1 copy, 1 move, 1 destructor.
-    log(baz, std::move(s));  // 2 move, 1 destructor.
-    log(baz, std::ref(s));  // 1 copy.
+    log(baz, s);  // 1 copy ctor, 1 move assignment, 1 destructor.
+    log(baz, std::move(s));  // 1 move ctor, 1 move assignment, 1 destructor.
+    log(baz, std::ref(s));  // 1 copy assignment
     // log(baz, std::ref(std::move(s)));  // Unsupported.
     log(baz, cs);  // 1 copy, 1 move, 1 destructor.
     log(baz, std::move(cs));  // 1 copy, 1 move, 1 destructor.

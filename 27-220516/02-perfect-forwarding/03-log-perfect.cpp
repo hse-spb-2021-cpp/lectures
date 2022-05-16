@@ -30,14 +30,14 @@ void log(Fn fn, Arg &&arg) { // Special `Arg` deduction rules: "forwarding refer
     // * Lvalue: Arg = T&, Arg&& = T&  (reference collapse rules: & + && = &, non-temporary wins)
     std::cout << "start\n";
     // std::forward<Arg> ~ static_cast<Arg&&>:
-    // * Rvalue: Arg = T , Arg&& = T&&, std::forward ~ static_cast<Arg&&> ~ std::move
-    // * Lvalue: Arg = T&, Arg&& = T& , std::forward ~ static_cast<Arg&>  ~ no-op !!!
+    // * Rvalue: Arg = T , Arg&& = T&&, std::forward ~ static_cast<T&&> ~ std::move
+    // * Lvalue: Arg = T&, Arg&& = T& , std::forward ~ static_cast<T&>  ~ no-op !!!
     fn(std::forward<Arg>(arg));
     // Notes:
-    // 1. Not `std::move`.
+    // 1. Not `std::move`: it always returns T&& (rvalue).
     // 2. `arg` is always lvalue of type `T`, so no automatic deduction is possible. Hence,
     //    the explicit template argument is required.
-    // Alternative: `std::forward<decltype(arg)>(arg)`.
+    // Alternative: `std::forward<Arg&&>(arg)`, `std::forward<decltype(arg)>(arg)`.
     std::cout << "end\n";
 }
 

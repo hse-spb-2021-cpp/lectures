@@ -4,6 +4,7 @@
 * Perfect forwarding does not inspect the function called. It adapts for the caller.
 * Use `ref`/`cref` if passing references is not good. E.g. passing a reference to a new thread is dangerous:
   ```c++
-  void some_thread(std::vector<int> vec) { .... }
-  std::thread t(some_thread, create_vector());  // temporary likely dies before the thread starts.
+  void some_thread(std::vector<int> vec, int &x) { .... }
+  int y = 5;
+  std::thread t(some_thread, create_vector(), std::ref(y));  // temporary likely dies before the thread starts.
   ```

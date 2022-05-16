@@ -24,15 +24,16 @@ struct Storer {
 };
 
 // Almost solution: overload `log` based on value category of each argument: lvalue/rvalue.
+// We can actually do overload.
 template<typename Arg, typename Fn>
-void log_lvalue(Fn fn, Arg &arg) {
+void log(Fn fn, Arg &arg) {
     std::cout << "start (1)\n";
     fn(arg);
     std::cout << "end\n";
 }
 
 template<typename Arg, typename Fn>
-void log_rvalue(Fn fn, Arg &&arg) {  // not really rvalue reference, but just you wait.
+void log(Fn fn, Arg &&arg) {  // not really rvalue reference, but just you wait.
     std::cout << "start (2)\n";
     fn(std::move(arg));
     std::cout << "end\n";
@@ -48,9 +49,9 @@ int main() {
     std::string s = "hello world from long string";
     const std::string cs = "hello world from long const string";
     Storer baz;
-    log_lvalue(baz, s);  // 1 copy
-    log_rvalue(baz, std::move(s));  // 1 move
-    log_lvalue(baz, cs);  // 1 copy
-    log_rvalue(baz, std::move(cs));  // 1 copy (because it's lvalue reference to const)
+    log_lvalue(baz, s);  // 1 copy assignment
+    log_rvalue(baz, std::move(s));  // 1 move assignment
+    log_lvalue(baz, cs);  // 1 copy assignment
+    log_rvalue(baz, std::move(cs));  // 1 copy (because it's rvalue reference to const)
     // Problem: two implementations of `log`.
 }
