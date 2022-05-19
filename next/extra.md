@@ -1,5 +1,3 @@
-return type deduction (auto; multiple returns)
-
 istreams hierarchy
 iterators hierarchy
 
