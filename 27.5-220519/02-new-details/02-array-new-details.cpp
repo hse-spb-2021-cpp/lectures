@@ -24,5 +24,4 @@ int main() {
     // Do not do placement new[]
     // https://github.com/Nekrolm/ubbook/blob/master/pointer_prominence/array_placement_new.md
     // https://stackoverflow.com/questions/15254/can-placement-new-for-arrays-be-used-in-a-portable-way
-    // TODO
 }
