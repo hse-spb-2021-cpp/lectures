@@ -18,6 +18,7 @@ int main() {
         } else {
            return 200.0;
         }
+        // return "foo";  // compilation error: cannot cast to double
     };
     std::cout << boost::core::demangle(typeid(g(10)).name()) << "\n";
 }

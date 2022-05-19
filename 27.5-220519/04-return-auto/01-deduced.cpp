@@ -1,3 +1,4 @@
+// Since C++14
 auto fib(int n) {
     if (n <= 1) {
         return 1;  // first return, deduced int

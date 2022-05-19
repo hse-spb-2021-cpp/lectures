@@ -4,8 +4,8 @@ int main() {
     int *ints;
 
     ints = new int[0];  // Non-null, may fail
-    std::cout << ints << "\n";  // Non-null (not sure if require or 
-    delete ints;
+    std::cout << ints << "\n";  // Non-null (not sure if required or not)
+    delete[] ints;
 
     ints = new int[5];  // default-initialization: uninitialized;
     std::cout << ints[0] << "\n";  // UB

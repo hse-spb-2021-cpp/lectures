@@ -15,5 +15,6 @@ int main() {
     std::cout << *i << "\n";  // UB
     delete i;
 
-    // same for placement new.
+    // Same for placement new.
+    // Especially dangerous in generic code: `new T` vs `new T()` when T ~ int
 }

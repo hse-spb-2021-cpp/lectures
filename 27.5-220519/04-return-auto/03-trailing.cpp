@@ -1,7 +1,7 @@
-// Different syntax for return type
+// "Trailing return type", syntax sugar
 auto fib(int n) -> int {
     if (n > 1) {
-        return fib(n - 1) + fib(n - 2);  // first return, cannot deduce
+        return fib(n - 1) + fib(n - 2);  // first return, cannot deduce, but it's ok
     } else {
         return 1;
     }

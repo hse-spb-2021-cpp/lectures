@@ -44,5 +44,5 @@ int main() {
     double z = 10.3;
     foo(z);  // Overload set: 1, 2, 3 (T=double), 4 (T=double)
              // Viable: 1, 2, 3 (T=double), 4 (T=double)
-             // Best viable: 4 (better argument match)*/
+             // Best viable: 4 (better argument match)
 }
