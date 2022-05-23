@@ -11,12 +11,13 @@ int main() {
     S s;
     S *sptr = &s;
 
-    int S::*a = &S::x;  // ok
+    int S::*a = &S::x;  // ok, remember 'a' is '0 bytes after S start'
     int (S::*b) = &S::y;  // ok, unnecessary parens
     // int S::*с = &(S::y);  // compilation error: &S::y is a whole
 
-    assert(s.*a == 1);
+    assert(s.*a == 1);  // access field of name '*a'
     assert(sptr->*a == 1);
+    // but actually it's a separate operator: .* ->*
 
     a = b;  // Now `a` "points" to a field `y` of arbitrary `S`.
     assert(s.*a == 2);
@@ -29,7 +30,7 @@ int main() {
     [[maybe_unused]] IntMemberOfS c = &S::x;
 
     // Or a standard library
-    std::invoke(a, s) = 3;
+    std::invoke(a, s) = 3;  // s.*a = 3;
     assert(std::invoke(a, s) == 3);
 
     // Works with inheritance
@@ -39,9 +40,13 @@ int main() {
     assert(s2.*d == 3);
     [[maybe_unused]] IntMemberOfS e = static_cast<IntMemberOfS>(d);  // There are explicit conversions
 
-    // Does not work with smart pointers (they forgot?)
     std::unique_ptr<S> p(new S);
     assert(std::invoke(a, *p) == 2);
     assert((*p).*a == 2);
-    // assert(*p->*a == 2);  // compilation error, not overloaded
+    // assert(p->*a == 2);  // compilation error, not overloaded (they forgot?)
+
+    // Works with virtual inheritance
 }
+
+template<typename, auto...> struct StructSaver {};
+StructSaver<S, &S::x, &S::y> saver;

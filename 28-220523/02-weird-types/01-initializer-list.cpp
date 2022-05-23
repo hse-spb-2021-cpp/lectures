@@ -10,6 +10,8 @@ struct Foo {
     }
 };
 
+template<typename> struct TD;
+
 struct Bar {
     Bar(std::initializer_list<int> x) {
         std::cout << x.size() << " " << *x.begin() << "\n";
@@ -18,9 +20,17 @@ struct Bar {
         std::cout << x.size() << " " << x.begin()->val << "\n";
     }
     Bar([[maybe_unused]] std::initializer_list<std::unique_ptr<int>> x) {
+        // TD<decltype(*x.begin())>{};
         // std::unique_ptr<int> y = std::move(*x.begin());  // Oops :(
     }
 };
+
+void demo_bar() {
+    Bar{1, 2, 3, 4};  // Bar(std::initializer_list<int>{1, 2, 3, 4});
+    Bar{{1, 2}, {3, 4}, {5, 6}};  // Bar(std::initializer_list<Foo>{Foo(1, 2), Foo(3, 4), Foo(5, 6)});
+}
+
+// Second part: recursion
 
 struct Baz {
     int val;
@@ -46,8 +56,7 @@ struct Baz {
 };
 
 int main() {
-    Bar{1, 2, 3, 4};
-    Bar{{1, 2}, {3, 4}, {5, 6}};
+    demo_bar();
     Baz{
         1,             //
         2,             //

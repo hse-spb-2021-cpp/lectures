@@ -6,6 +6,7 @@ template<typename T> T* addressof(T& value) {
 }
 
 void some_c_api(const void*);
+
 template<typename T>
 void CallSomeCApi(const T &value) {
     some_c_api(static_cast<const void*>(&value));

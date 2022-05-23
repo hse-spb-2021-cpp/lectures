@@ -16,6 +16,7 @@ decltype(auto) logged(Fn fn, Args &&...args) {
     decltype(auto) res = fn(std::forward<Args>(args)...);
     std::cout << "ended\n";
     return res;
+    // return (res);  // wrong
 }
 
 int main() {

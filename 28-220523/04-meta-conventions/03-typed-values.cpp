@@ -8,7 +8,8 @@ template<typename T>      struct bad_fac<T, 0> {};  // compilation error
 // Workaround: wrap (T, N) inside a single type integral_constant
 
 template<typename /*N*/> struct fac {};  // Basic case, never called;
-template<typename T, T N> constexpr auto fac_v =
+template<typename T, T N>
+inline constexpr auto fac_v =
     fac<std::integral_constant<T, N>>::value;
 
 template<typename T, T N> struct fac<std::integral_constant<T, N>>

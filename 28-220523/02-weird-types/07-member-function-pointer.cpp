@@ -23,7 +23,8 @@ int main() {
     assert((s.*b)(5) == 145);
     assert(std::invoke(b, s, 4) == 144);
 
+    // ->* works as well
+
     // Works with virtual functions, virtual inheritance => may need multiple pointers and be big, incompatible with function pointers.
-    
     // Be careful with overloads, just like in function pointers
 }

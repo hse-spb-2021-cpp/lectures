@@ -26,7 +26,7 @@ static_assert(!std::is_convertible_v<int, double&>);
 static_assert(std::is_convertible_v<int&, double>);
 static_assert(!std::is_convertible_v<int, std::vector<int>>);
 
-// explicit construction
+// explicit or implicit construction
 static_assert(std::is_constructible_v<std::vector<int>>);
 static_assert(std::is_default_constructible_v<std::vector<int>>);
 static_assert(std::is_constructible_v<std::vector<int>, int>);

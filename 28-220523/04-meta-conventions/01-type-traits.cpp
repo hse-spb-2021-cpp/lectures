@@ -1,7 +1,7 @@
 #include <cassert>
 #include <cstddef>
 
-// Convention since C++98: a "function" from a type to types.
+// Convention since C++98: a "function" from a type/value to types/values/functions.
 // Not like Rust traits, probably not "типаж".
 
 // Similar to std::iterator_traits
@@ -9,6 +9,8 @@ template<typename T>
 struct iterator_traits {  // General case (may be absent)
     using value_type = typename T::value_type;
     using difference_type = typename T::difference_type;
+
+    // TODO: extract into a separate file
     // Can also add static methods (`char_traits::eq`, `allocator_traits::allocate`) or static fields
     // See https://stackoverflow.com/a/5319855/767632 for char_traits, but I've never seen it
     // Typically no non-static methods.
