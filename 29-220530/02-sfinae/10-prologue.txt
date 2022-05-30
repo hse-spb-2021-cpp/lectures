@@ -7,3 +7,7 @@ It's useful when:
 * We know that this overload may not work and would like to report that immediately.
 
 In C++20 a strictly better alternative is concepts. Specifically, the `requires` keyword and constraints.
+https://www.cppstories.com/2021/concepts-intro/
+https://habr.com/ru/company/yandex_praktikum/blog/556816/
+https://habr.com/ru/post/495396/
+Hard level: https://habr.com/ru/company/jugru/blog/467299/
