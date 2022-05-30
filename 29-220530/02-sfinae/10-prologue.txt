@@ -1,4 +1,5 @@
-Multiple SFINAE techniques are demonstrated next. They can be used to solve any SFINAE-related problem you want.
+Multiple SFINAE techniques are demonstrated next.
+They can be used to solve any SFINAE-related problem you want.
 No need to use only `retval` to help with the error message.
 
 We use SFINAE to "remove" some overloads from overload set.

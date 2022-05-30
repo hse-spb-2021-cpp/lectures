@@ -3,4 +3,3 @@ a) standard conventions;
 b) standard implementations of these conventions for compile-time manipulations;
 c) user-defined compile-time manipulations;
 d) extendable type traits.
-

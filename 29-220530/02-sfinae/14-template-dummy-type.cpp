@@ -32,4 +32,5 @@ int main() {
     [[maybe_unused]] Foo foo{50};
     assert(a + c == 40);  // should work
     // assert(a + foo == 60);  // does not compile: no match for 'operator+'
+    // assert(foo + foo == 60);  // does not compile: no match for 'operator+'
 }

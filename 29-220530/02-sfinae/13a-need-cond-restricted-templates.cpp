@@ -18,4 +18,5 @@ int main() {
     [[maybe_unused]] Foo foo{50};
     assert(a + c == 40);  // should work
     assert(a + foo == 60);  // FIXME: should not compile
+    assert(foo + foo == 60);  // FIXME: should not compile
 }

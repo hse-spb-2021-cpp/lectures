@@ -54,7 +54,7 @@ struct optional {
         }
     }
     optional &operator=(const optional &other)
-        // defualt is bad, optional<int> is not nothrow-copyable
+        // default is bad, optional<int> is not nothrow-copyable
         // noexcept  // optional<std::string> is not nothrow-copyable
         noexcept(std::is_nothrow_copy_constructible_v<T>)  // ok, conditional noexcept-qualifier
     {

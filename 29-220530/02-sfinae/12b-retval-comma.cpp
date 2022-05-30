@@ -17,7 +17,7 @@ struct E { int val2 = 0; };
 struct F { int val2 = 0; };
 
 template<typename T>
-auto println(const T &v) -> decltype(std::cout << v.val2, void()) {
+decltype(std::cout << std::declval<T>().val2, void()) println(const T &v) {
     std::cout << v.val2 << "\n";
 }
 

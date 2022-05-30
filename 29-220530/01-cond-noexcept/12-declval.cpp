@@ -16,8 +16,8 @@ struct Foo {
 static_assert(is_nothrow_copy_assignable_1<std::optional<int>>);
 static_assert(!is_nothrow_copy_assignable_1<std::vector<int>>);
 // static_assert(is_nothrow_copy_assignable_1<Foo>);  // static assertion failed: constructor is not noexcept
-// static_assert(is_nothrow_copy_assignable_1<int>);  // compilation error: cannot assign to a temporary int
 // static_assert(is_nothrow_copy_assignable_1<std::runtime_error>);  // compilation error: no default constructor
+// static_assert(is_nothrow_copy_assignable_1<int>);  // compilation error: cannot assign to a temporary int
 
 template<typename T>
 constexpr bool is_nothrow_copy_assignable_2 = noexcept(std::declval<T&>() = std::declval<const T&>());

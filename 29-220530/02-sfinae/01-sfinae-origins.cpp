@@ -26,7 +26,8 @@ int main() {
     assert((a == std::vector{1, 2, 2, 3}));
 
     int b[] = {1, 2, 3};
-    duplicate_element(b, b + 1);  // Not a compilation error when we "try" the first overload even though `int[]::iterator` does not exist. Substitution `T=int[]` failure, not an error.
+    duplicate_element(b, b + 1);  // Not a compilation error when we "try" the first
+    // overload even though `int[]::iterator` does not exist. Substitution `T=int[]` failure, not an error.
     assert(b[0] == 2);
     assert(b[1] == 2);
     assert(b[2] == 3);

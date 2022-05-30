@@ -28,4 +28,5 @@ int main() {
     assert(a + c == 40);  // should work
     assert(a + 20 == 30);  // should work
     // assert(a + foo == 60);  // does not compile: no match for 'operator+'
+    // assert(foo + foo == 60);  // does not compile: no match for 'operator+'
 }

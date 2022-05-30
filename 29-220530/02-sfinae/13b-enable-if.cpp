@@ -8,7 +8,10 @@ struct D { int val = 0; };
 struct Foo { int val = 0; };
 
 template<typename T>
-constexpr bool good_for_plus = std::is_same_v<A, T> || std::is_same_v<B, T> || std::is_same_v<C, T> || std::is_same_v<D, T>;
+constexpr bool good_for_plus = std::is_same_v<A, T> ||
+                               std::is_same_v<B, T> ||
+                               std::is_same_v<C, T> ||
+                               std::is_same_v<D, T>;
 
 template<bool Cond, typename T>
 struct enable_if {};
@@ -32,5 +35,6 @@ int main() {
     C c{30};
     [[maybe_unused]] Foo foo{50};
     assert(a + c == 40);  // should work
-    // assert(a + foo == 60);  // does not compile: no match for 'operator+'
+    assert(a + foo == 60);  // does not compile: no match for 'operator+'
+    assert(foo + foo == 60);  // does not compile: no match for 'operator+'
 }

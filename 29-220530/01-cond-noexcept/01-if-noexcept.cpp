@@ -6,7 +6,7 @@
 
 template<typename T>
 struct vector {
-    T *data;
+    T *data = nullptr;
     std::size_t len = 0;
 
     vector() = default;
@@ -46,6 +46,10 @@ int main() {
     }
     {
         vector<std::string> v1, v2;
+        v1 = v2;  // creating a new buffer
+    }
+    {
+        vector<std::optional<std::string>> v1, v2;
         v1 = v2;  // creating a new buffer
     }
     {

@@ -22,6 +22,6 @@ void foo(T, std::nullptr_t) {
 int main() {
     foo(BotvaHolder(), 10);  // 1
     foo(BotvaHolder(), nullptr);  // 2
-    // foo(10, 10);  // CE
     foo(10, nullptr); // 2???
+    // foo(10, 10);  // CE
 }
