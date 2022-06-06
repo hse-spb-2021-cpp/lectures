@@ -1,8 +1,6 @@
 #include <cstddef>
 #include <utility>
 
-// https://stackoverflow.com/a/3279550/767632
-
 struct minivector {
 private:
     int *data = nullptr;

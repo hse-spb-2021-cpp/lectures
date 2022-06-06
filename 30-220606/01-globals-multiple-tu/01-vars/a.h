@@ -3,9 +3,13 @@
 
 #include <string>
 
-// int var1 = 10;  // multiple definition
-// std::string var2 = "hello";  // multiple definition
+// WARNING: still be careful with Static Initialization Order Fiasco!
 
+// int var1;  // multiple definition
+// std::string var2 = "hello";  // multiple definition
+inline std::string var3 = "world";
+
+// just declaration
 extern int var1;
 extern std::string var2;
 

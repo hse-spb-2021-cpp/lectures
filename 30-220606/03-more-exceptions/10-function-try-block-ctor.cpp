@@ -15,6 +15,7 @@ struct Foo : Base {
         : a(a_)
         , b(b_)
     {
+        std::cout << "constructor called\n";
     } catch (const std::bad_alloc &) {
         // Catching exceptions from: member initialization list (even omittied), constructor's body.
         std::cout << "Allocation failed\n";

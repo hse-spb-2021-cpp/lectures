@@ -10,7 +10,9 @@ public:
 
 public:
 #if 1
-    Foo() : l{"hello first very very very very long string", "hello second very very very very long string"}, it(std::next(l.begin())) {}
+    Foo()
+       : l{"hello first very very very very long string", "hello second very very very very long string"}
+       , it(std::next(l.begin())) {}
     void check() {
         assert(*it == "hello second very very very very long string");
     }

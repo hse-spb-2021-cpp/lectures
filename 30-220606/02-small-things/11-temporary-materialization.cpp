@@ -35,7 +35,7 @@ Foo &&pass_ref(Foo &&f) {  // Forces "temporary materialization" by binding a re
 
 Foo pass_copy(Foo f) {  // Forces "temporary materialization" by binding a reference inside Foo(Foo&&)
     std::cout << "arg is " << &f << "\n";
-    return f;
+    return f;  // no std::move to enable NRVO
 }
 
 void consume(Foo f) {
@@ -46,4 +46,8 @@ int main() {
     consume(pass_ref(create_foo_rvo()));
     std::cout << "=====\n";
     consume(pass_copy(create_foo_rvo()));
+    std::cout << "=====\n";
+    [[maybe_unused]] Foo f = Foo(Foo(Foo(Foo(Foo()))));
+    std::cout << "=====\n";
+    [[maybe_unused]] Foo g = Foo(Foo(Foo(static_cast<Foo&&>(Foo(Foo(Foo()))))));
 }

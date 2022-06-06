@@ -10,7 +10,7 @@ int main() {
     std::cout << Foo::str1 << " " << &Foo::str1 << "\n";
     std::cout << Foo::str2 << " " << &Foo::str2 << "\n";
     std::cout << Foo::str3 << " " << &Foo::str3 << "\n";
-    // std::cout << Foo::str4 << " " << &Foo::str4 << "\n";
+    std::cout << Foo::str4 << " " << &Foo::str4 << "\n";
 
     foo();
 }
