@@ -3,3 +3,5 @@
 
 ~Foo() noexcept(?????) {  // TODO: can we do SFINAE inside noexcept()?
 }
+
+// Answered on 14.06.2023 after all classes: no, noexcept() specifier does not have SFINAE: https://stackoverflow.com/a/33667546/767632
