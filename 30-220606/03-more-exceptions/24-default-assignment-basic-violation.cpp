@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+// See exercise `16-220124`, `30-copy-no-basic-guarantee`
 // https://stackoverflow.com/questions/13341456/exception-safety-of-c-implicitly-generated-assignment-operator
 
 int throw_after = 1;
