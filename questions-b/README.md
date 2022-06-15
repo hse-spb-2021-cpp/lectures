@@ -125,7 +125,7 @@
 * Ref-qualifiers: `&`, `&&`, перегрузка по ним и по const-qualifier
 * Перегрузка `operator[]`
 * Своя реализация `std::vector`
-    * Перегрузка `push_back` для `const T&` и `T&&` как альтернатива perfect forwarding; отличие от принятия по константной ссылке или по значение
+    * Перегрузка `push_back` для `const T&` и `T&&` как альтернатива perfect forwarding; отличие от принятия по константной ссылке или по значению
     * Использование `const_cast` для уменьшения дублирования кода (`27.5-220519/01-c-cpp-extern/02-const-cast/in-vector.cpp`)
     * Трудности с обеспечением базовой гарантии исключений при создании массива объектов (практика `30-220606`, задания `0*-minivector*`)
 
@@ -419,7 +419,7 @@
   как обойти
 * Стандартные `type_traits`
     * Отличия `is_convertible` и `is_constructible`
-    * Отличия `is_base_of` и `is_convertible` на указателях (`30-220606/02-small-things/02-is-base.cpp`)
+    * Отличия `is_convertible` на указателях и `is_base_of` (`30-220606/02-small-things/02-is-base.cpp`)
 * Условный спецификатор `noexcept`: зачем нужен, синтаксис
 * Оператор `noexcept`, синтаксис `noexcept(noexcept(....))`
 * Вспомогательная функция `std::declval<>` (в том числе возвращающая lvalue/xvalue/prvalue), пример внутри `decltype`
