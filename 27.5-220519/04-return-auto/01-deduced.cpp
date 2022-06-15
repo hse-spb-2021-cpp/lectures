@@ -26,3 +26,9 @@ auto returning_initializer_list() {
     return Foo();
     return {};  // still compilation error
 }
+
+void do_something() {}
+
+auto return_void() {
+    return do_something();  // ok, returning void, but should not be `auto&`
+}
