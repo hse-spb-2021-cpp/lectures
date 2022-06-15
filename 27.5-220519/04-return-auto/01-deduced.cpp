@@ -19,3 +19,10 @@ auto inconsistent_deduction() {
     return 1;
     return 'x';  // 'int' and 'char' can be implicitly converted, but are not the same type
 }
+
+struct Foo {};
+
+auto returning_initializer_list() {
+    return Foo();
+    return {};  // still compilation error
+}
