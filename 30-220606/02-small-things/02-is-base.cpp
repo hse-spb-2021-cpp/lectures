@@ -15,3 +15,5 @@ int main() {
     std::cout << std::is_base_of_v<SecretBase, Derived> << "\n";  // 1
     std::cout << std::is_convertible_v<Derived*, SecretBase*> << "\n";  // 0, because inheritance is private
 }
+
+// TODO: what about ambiguous base?
