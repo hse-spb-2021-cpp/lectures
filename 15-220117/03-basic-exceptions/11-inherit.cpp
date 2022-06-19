@@ -12,6 +12,8 @@ struct my_runtime_error : std::runtime_error {  // Choice between runtime_error 
     my_runtime_error() : std::runtime_error("yay! " + std::to_string(123)) {}
 };
 
+// TODO: guess what is wrong with `class my_runtime_error : std::runtime_error`
+
 int main() {
     try {
         throw my_exception();
